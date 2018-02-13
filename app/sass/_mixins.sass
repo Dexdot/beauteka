@@ -1,0 +1,105 @@
+// Gilroy
+@font-face 
+	font-family: 'Gilroy'
+	src: url('../fonts/gilroy/Gilroy-Bold.woff2') format('woff2'),url('../fonts/gilroy/Gilroy-Bold.woff') format('woff')
+	font-weight: 700
+	font-style: normal
+@font-face 
+	font-family: 'Gilroy'
+	src: url('../fonts/gilroy/Gilroy-Medium.woff2') format('woff2'),url('../fonts/gilroy/Gilroy-Medium.woff') format('woff')
+	font-weight: 500
+	font-style: normal
+=gilroy($weight)
+	@if $weight == md
+		font-family: 'Gilroy', sans-serif
+		font-weight: 500
+	@if $weight == bold
+		font-family: 'Gilroy', sans-serif
+		font-weight: 700
+
+// Muller
+@font-face 
+	font-family: 'Muller'
+	src: url('../fonts/muller/MullerRegular.woff2') format('woff2'),url('../fonts/muller/MullerRegular.woff') format('woff')
+	font-weight: 400
+	font-style: normal
+@font-face 
+	font-family: 'Muller'
+	src: url('../fonts/muller/MullerMedium.woff2') format('woff2'),url('../fonts/muller/MullerMedium.woff') format('woff')
+	font-weight: 500
+	font-style: normal
+=muller($weight)
+	@if $weight == reg
+		font-family: 'Gilroy', sans-serif
+		font-weight: 400
+	@if $weight == md
+		font-family: 'Gilroy', sans-serif
+		font-weight: 500
+
+// Osnova Pro
+@font-face 
+	font-family: 'Osnova Pro'
+	src: url('../fonts/osnova/OsnovaPro-Light.woff2') format('woff2'),url('../fonts/osnova/OsnovaPro-Light.woff') format('woff')
+	font-weight: 300
+	font-style: normal
+@font-face 
+	font-family: 'Osnova Pro'
+	src: url('../fonts/osnova/OsnovaPro-Regular.woff2') format('woff2'),url('../fonts/osnova/OsnovaPro-Regular.woff') format('woff')
+	font-weight: 400
+	font-style: normal
+@font-face 
+	font-family: 'Osnova Pro'
+	src: url('../fonts/osnova/OsnovaPro-Medium.woff2') format('woff2'),url('../fonts/osnova/OsnovaPro-Medium.woff') format('woff')
+	font-weight: 500
+	font-style: normal
+=osnova($weight)
+	@if $weight == lt
+		font-family: 'Osnova Pro', sans-serif
+		font-weight: 300
+	@if $weight == reg
+		font-family: 'Osnova Pro', sans-serif
+		font-weight: 400
+	@if $weight == md
+		font-family: 'Osnova Pro', sans-serif
+		font-weight: 500
+
+// Proxima Nova
+@font-face 
+	font-family: 'Proxima Nova Lt'
+	src: url('../fonts/proxima/ProximaNova-Light.woff2') format('woff2'),url('../fonts/proxima/ProximaNova-Light.woff') format('woff')
+	font-weight: 300
+	font-style: normal
+@font-face 
+	font-family: 'Proxima Nova Rg'
+	src: url('../fonts/proxima/ProximaNova-Regular.woff2') format('woff2'),url('../fonts/proxima/ProximaNova-Regular.woff') format('woff')
+	font-weight: 400
+	font-style: normal
+@font-face 
+	font-family: 'Proxima Nova Lt'
+	src: url('../fonts/proxima/ProximaNova-Semibold.woff2') format('woff2'),url('../fonts/proxima/ProximaNova-Semibold.woff') format('woff')
+	font-weight: 600
+	font-style: normal
+=proxima($weight)
+	@if $weight == lt
+		font-family: 'Proxima Nova Lt', sans-serif
+		font-weight: 300
+	@if $weight == reg
+		font-family: 'Proxima Nova Rg', sans-serif
+		font-weight: 400
+	@if $weight == sb
+		font-family: 'Proxima Nova Lt', sans-serif
+		font-weight: 500
+
+// Philosopher
+=phil
+	font-family: 'Philosopher', sans-serif
+	font-weight: 400
+
+// Open Sans
+=open
+	font-family: 'Open Sans', sans-serif
+	font-weight: 300
+
+
+
+	

@@ -1,0 +1,436 @@
+@import "vars"
+@import "mixins"
+
+@media only screen and (min-width : 1399px)
+
+	.section-header
+		font-size: 52px
+		margin-bottom: 20px
+	.arrow-down
+		height: 110px
+		margin: 54px auto 0 auto
+
+	// Main
+	.nav
+		&__link
+			font-size: 12px
+			margin-left: 50px
+	.main
+		left: 16%
+		&__header
+			font-size: 80px
+		&__desc
+			margin-top: 40px
+			font-size: 14px
+	.logo
+		&-video
+			top: calc(50% + 112px)
+			left: calc(50% + 112px)
+	#mask
+		transform: scale(0.0033)
+
+	// About
+	.about__desc
+		font-size: 14px
+		max-width: 530px
+	
+	// Test
+	#test
+		min-height: 1080px
+	.test
+		&-head
+			margin-bottom: 110px
+		&-desc
+			font-size: 16px
+		&__number
+			font-size: 22px
+			span
+				font-size: 38px
+		&__tip
+			margin: 53px 0 21px 0
+			font-size: 16px
+		&__question
+			font-size: 22px
+		&__btns
+			margin: 60px auto
+		&__btn
+			width: 330px
+			height: 100px
+			margin-left: 16px
+			margin-right: 16px
+			font-size: 14px
+		&__answer
+			font-size: 14px
+			max-width: 450px
+		&__text
+			font-size: 28px
+		&-link
+			font-size: 14px
+			bottom: 50px
+			&__arrow
+				left: 45px
+		&__answer--final
+			max-width: 570px
+		&-final
+			&__arrow
+				width: 80px
+				height: 114px
+		&-card
+			width: 570px
+			min-height: 360px
+			margin: 0 auto 46px auto
+			&__cover
+				padding: 57px 9px 9px 9px
+			&__title
+				font-size: 40px
+			&__info
+				font-size: 16px
+				margin-bottom: 48px
+			&__desc
+				font-size: 14px
+			&__footer
+				margin-top: 24px
+			&__share
+				font-size: 14px
+			&__social
+				margin-left: 14px
+			&__link
+				font-size: 13px
+	.leaf
+		width: 415px
+		height: 415px
+		&-left
+			left: 50px
+			img
+				width: 300px
+		&-right
+			right: 50px
+			img
+				width: 360px
+	$offset: 100px
+	.petal
+		&-1
+			top: 200px + $offset
+			width: 25px
+		&-2
+			top: 220px + $offset
+			width: 77px
+		&-3
+			top: 530px + $offset
+			width: 90px
+		&-4
+			top: 740px + $offset
+			width: 92px
+		&-5
+			top: 790px + $offset
+			width: 46px
+		&-6
+			top: 710px + $offset
+			width: 16px
+		&-7
+			top: 810px + $offset
+			width: 74px
+		&-8
+			top: 720px + $offset
+			width: 76px
+		&-9
+			top: 480px + $offset
+			width: 46px
+		&-10
+			top: 240px + $offset
+			width: 52px
+		&-11
+			top: 270px + $offset
+			width: 36px
+		&-12
+			top: 780px + $offset
+			width: 25px
+
+	// Experts
+	.expert
+		&:hover
+			.expert__inner
+				top: 100px
+		&__inner
+			min-height: 100px
+		&__title
+			font-size: 22px
+			margin-bottom: 24px
+		&__article
+			font-size: 14px
+			margin-bottom: 76px
+		&__name
+			font-size: 16px
+			margin-bottom: 12px
+		&__desc
+			font-size: 14px
+
+		&__close svg
+			width: 43px
+			height: 43px
+		&__gradient
+			height: 66px
+		&-opened
+			&__name
+				font-size: 22px
+				margin-bottom: 8px
+			&__desc
+				font-size: 14px
+				margin-bottom: 35px
+			&__title
+				font-size: 36px
+				margin-bottom: 26px
+			&__article
+				font-size: 16px
+
+@media only screen and (min-width : 1689px)
+	
+	.section-header
+		font-size: 64px
+		margin-bottom: 30px
+	.arrow-down
+		height: 130px
+		margin: 65px auto 0 auto
+
+	// Main
+	.header__logo svg
+		width: 53px
+		height: 53px
+	.nav__link
+			font-size: 12px
+			margin-left: 80px
+	.main
+		left: 20%
+		&__header
+			font-size: 94px
+		&__desc
+			font-size: 16px
+			margin-top: 60px
+	.logo
+		&-video
+			top: calc(50% + 96px)
+			left: calc(50% + 96px)
+			width: 800px
+			height: 800px
+	#mask
+		transform: scale(0.0037)
+
+	// About
+	.about__desc
+		font-size: 16px
+		max-width: 620px
+
+	// Test
+	.test
+		&-head
+			margin-bottom: 130px
+		&-desc
+			font-size: 18px
+		&__number
+			font-size: 24px
+			span
+				font-size: 40px
+		&__tip
+			margin-bottom: 25px
+			margin: 64px 0 25px 0
+			font-size: 18px
+		&__question
+			font-size: 24px
+		&__btns
+			margin: 70px auto
+		&__btn
+			width: 395px
+			height: 120px
+			margin-left: 18px
+			margin-right: 18px
+			font-size: 16px
+		&__answer
+			font-size: 16px
+			max-width: 520px
+		&__text
+			font-size: 30px
+		&-link
+			font-size: 16px
+			bottom: 0
+			&__arrow
+				left: 70px
+		&__answer--final
+			max-width: 650px
+		&-final
+			&__arrow
+				width: 96px
+				height: 136px
+		&-card
+			width: 650px
+			min-height: 425px
+			margin: 0 auto 55px auto
+			&__cover
+				padding: 65px 10px 10px 10px
+			&__title
+				font-size: 48px
+			&__info
+				font-size: 18px
+				margin-bottom: 58px
+			&__desc
+				font-size: 16px
+			&__footer
+				margin-top: 24px
+			&__share
+				font-size: 16px
+			&__social
+				margin-left: 16px
+			&__link
+				font-size: 14px
+	.leaf
+		width: 495px
+		height: 495px
+		&-left
+			left: 100px
+			img
+				width: 360px
+		&-right
+			right: 100px
+			img
+				width: 440px
+	$offset: 220px
+	.petal
+		&-1
+			top: 200px + $offset
+			width: 30px
+		&-2
+			top: 220px + $offset
+			width: 92px
+		&-3
+			top: 530px + $offset
+			width: 107px
+		&-4
+			top: 740px + $offset
+			width: 110px
+		&-5
+			top: 850px + $offset
+			width: 55px
+		&-6
+			top: 710px + $offset
+			right: 800px
+			width: 20px
+		&-7
+			top: 870px + $offset
+			width: 88px
+		&-8
+			top: 720px + $offset
+			width: 92px
+		&-9
+			top: 480px + $offset
+			width: 56px
+		&-10
+			top: 240px + $offset
+			width: 62px
+		&-11
+			top: 200px + $offset
+			width: 43px
+		&-12
+			top: 780px + $offset
+			width: 30px
+	
+	// Experts
+	.expert
+		&:hover
+			.expert__inner
+				top: 120px
+		&__inner
+			min-height: 120px
+		&__title
+			font-size: 24px
+			margin-bottom: 28px
+		&__article
+			font-size: 16px
+			margin-bottom: 90px
+		&__name
+			font-size: 18px
+			margin-bottom: 14px
+		&__desc
+			font-size: 16px
+		
+		&__close svg
+			width: 52px
+			height: 52px
+		&__gradient
+			height: 80px
+		&-opened
+			&__name
+				font-size: 24px
+				margin-bottom: 10px
+			&__desc
+				font-size: 16px
+				margin-bottom: 40px
+			&__title
+				font-size: 48px
+				margin-bottom: 34px
+			&__article
+				font-size: 18px
+
+@media only screen and (min-width : 1689px) and (min-height : 1000px)
+	.test-link
+		bottom: 7%
+
+
+
+
+@media only screen and (max-width : 1199px)
+
+	// Main
+	.nav__link
+		font-size: 11px
+		margin-left: 30px
+	.main
+		left: 16%
+		&__header
+			font-size: 56px
+		&__desc
+			font-size: 11px
+	.logo-video
+		top: calc(50% + 157px)
+		left: calc(50% + 157px)
+		width: 650px
+		height: 650px
+	#mask
+		transform: scale(0.0025)
+
+@media only screen and (max-width : 991px) 
+
+	// Main
+	.main
+		top: calc(50% - 20px)
+		left: 12%
+		&__header
+			font-size: 48px
+		&__desc
+			margin-top: 20px
+
+@media only screen and (max-width : 767px) 
+
+	// Main
+	.hamburger 
+		display: block
+	.nav 
+		width: 100%
+		height: 100%
+		position: fixed
+		top: 0
+		left: 0
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
+		background: #aeaeae
+		z-index: 5
+		line-height: 3
+		transform: translateX(100%)
+		transition: transform 0.3s ease-out
+		&.is-active
+			transform: translateX(0)
+
+
+// @media only screen and (max-width : 480px) 
+
+// @media only screen and (max-width : 330px) 

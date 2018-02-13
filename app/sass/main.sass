@@ -1,0 +1,629 @@
+@import "hamburgers"
+@import "libs"
+@import "mixins"
+@import "vars"
+
+html
+	background: #f8f7f9
+body 
+	opacity: 1
+	position: relative
+
+/* 
+	1. Main
+	2. About
+	3. Test
+	4. Experts
+	5. Products
+	6. Subscribe
+	7. Contacts
+	8. Footer
+ */
+
+// Common
+.hidden
+	display: none
+	opacity: 0
+	visibility: hidden
+	z-index: -1
+.center
+	position: fixed
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+	width: 100%
+	z-index: 2
+	height: 1px
+	background: red
+	&::before
+		content: ''
+		position: fixed
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		width: 1px
+		height: 100vh
+		z-index: 2
+		background: red
+.section-header
+	+phil
+	color: #333
+	font-size: 44px
+	margin-bottom: 10px
+.text-center
+	text-align: center
+.arrow-down
+	width: 16px
+	height: 90px
+	margin: 45px auto 0 auto
+	display: block
+
+
+// Header
+.hamburger 
+	display: none
+	position: fixed
+	top: 35px	
+	right: 15px
+	padding: 0
+	z-index: 10
+	outline: none
+	background-color: transparent
+	border-radius: 50%
+	width: 35px
+	height: 35px
+	&-box 
+		transform: translateY(2px)
+.header
+	padding-top: 35px
+	position: absolute
+	z-index: 1
+	top: 0
+	left: 0
+	right: 0
+	&__inner
+		display: flex
+		align-items: flex-start
+		justify-content: space-between
+	&__logo svg
+		width: 44px
+		height: 44px
+.nav
+	li
+		display: inline-block
+	&__link 
+		text-transform: uppercase
+		font-size: 11px
+		color: #fff
+		+osnova(md)
+		margin-left: 40px
+
+
+// Main
+.blur
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100vh
+	z-index: -1
+	filter: blur(3px)
+	transform: scale(1.01)
+	&::before
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100vh
+		background: #243f64
+		opacity: 0.2
+	&::after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100vh
+		background: #032e21
+		opacity: 0.4
+#main
+	min-height: 100vh
+	width: 100%
+	overflow: hidden
+	position: relative
+.main
+	position: absolute
+	top: calc(50% - 40px)
+	left: 16%
+	transform: translateY(-50%)
+	&__header
+		color: #fff
+		+phil
+		font-size: 67px
+		line-height: 1
+		text-shadow: 0px 8px 32px #0c2d43
+	&__desc
+		color: #fff
+		+osnova(reg)
+		font-size: 12px
+		line-height: 1.8
+		margin-top: 30px
+
+// Video logo
+#mask
+	transform: scale(0.003)
+.logo
+	&-video
+		position: absolute
+		transform: translate(-50%, -50%)
+		top: calc(50% + 133px)
+		left: calc(50% + 133px)
+		width: 700px
+		height: 700px
+		z-index: -1
+		& > div
+			clip-path: url(#mask)
+
+
+// About
+#about
+	width: 100%
+	min-height: 70vh
+	position: relative
+.about
+	position: absolute
+	top: 50%
+	transform: translateY(-50%)
+	padding-left: 6%
+	&__desc
+		font-size: 12px
+		max-width: 460px
+		line-height: 1.6
+		+osnova(reg)
+		color: #606060
+
+
+// Test
+#test
+	padding-top: 5%
+	min-height: 1000px
+	position: relative
+	.container
+		position: relative
+.test
+	&-second, 
+		transform: translateY(-50px)
+	&-final	
+		transform: translateY(-30px)
+		&__arrow
+			width: 67px
+			height: 96px
+			margin-top: 30px
+	&-head
+		margin-bottom: 90px
+	&-desc
+		+osnova(reg)
+		color: #606060
+		font-size: 14px
+		line-height: 1.6
+	&__number
+		display: inline-block
+		font-size: 20px
+		line-height: 1
+		color: #333
+		+phil
+		span
+			font-size: 36px
+			color: #10893e
+	&__tip
+		+open
+		font-size: 14px
+		color: #969696
+		margin: 44px 0 17px 0
+	&__question
+		+osnova(md)
+		color: #333
+		font-size: 20px
+	&__btns
+		display: flex
+		align-items: center
+		justify-content: center
+		margin: 50px auto
+	&__btn
+		border: 1px dotted #41526f
+		background: transparent
+		border-radius: 100px
+		width: 280px
+		height: 84px
+		margin-left: 14px
+		margin-right: 14px
+
+		+osnova(reg)
+		font-size: 12px
+		color: #333
+		&.is-true
+			border: 1px solid #00b95a
+		&.is-false
+			border: 1px dotted #ff0000
+	&__answer
+		+osnova(reg)
+		font-size: 12px
+		color: #333
+		max-width: 430px
+		margin: 0 auto
+		&--final
+			max-width: 500px
+	&__text
+		+proxima(reg)
+		font-size: 26px
+		color: #333
+	&-link
+		position: relative
+		+osnova(md)
+		color: #333
+		font-size: 13px
+		display: block
+		margin: 0 auto
+		width: 185px
+		transform: translateY(-30px)
+		transition: color 0.2s ease-out
+		&__arrow
+			position: absolute
+			top: -45px
+			left: 40px
+			width: 140px
+			transition: transform 0.2s ease
+			&:hover
+				transform: translateX(20px)
+		&.is-down
+			transform: translateY(140px)
+		&:hover
+			color: #00B859
+	&-card
+		box-shadow: 0px 8px 38px 0px rgba(12, 45, 67, 0.1)
+		border-radius: 10px
+		background: #fff
+		padding: 20px
+		width: 500px
+		min-height: 300px
+		margin: 0 auto 38px auto
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		&__cover
+			padding: 48px 8px 8px 8px
+			width: 100%
+			position: relative
+			background: url(../img/test/fin.jpg) no-repeat center
+			background-size: cover
+			display: flex
+			flex-direction: column
+			align-items: center
+			justify-content: space-between
+		&__logo
+			width: 123px
+			height: 36px
+			position: absolute
+			top: 12px
+			left: 16px
+		&__title
+			color: #fff
+			+phil
+			font-size: 33px
+			text-shadow: 0px 0px 9px #0c2d43
+		&__info
+			width: 70%
+			color: #fff
+			+osnova(reg)
+			font-size: 14px
+			line-height: 1.6
+			margin-bottom: 40px
+		&__desc
+			color: #fff
+			+osnova(lt)
+			font-size: 12px
+		&__footer
+			margin-top: 20px
+			display: flex
+			flex-direction: row
+			align-items: center
+			justify-content: space-between
+		&__share
+			color: #333
+			+osnova(md)
+			font-size: 12px
+			display: flex
+			align-items: center
+		&__social
+			width: 34px
+			height: 34px
+			margin-left: 12px
+		&__link
+			position: relative
+			+osnova(md)
+			color: #333
+			font-size: 12px
+			transform: translate(-60px, -15px)
+			transition: color 0.2s ease-out
+			&-arrow
+				position: absolute
+				top: -50px
+				left: 30px
+				width: 140px
+				transition: transform 0.2s ease
+				&:hover
+					transform: translateX(20px)
+			&:hover
+				color: #00B859
+		.test__number
+			color: #fff
+.leaf
+	position: absolute
+	bottom: -30%
+	background: transparent
+	border: none
+	border-radius: 50%
+	width: 345px
+	height: 345px
+	&::before
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		background: #edeef0
+		border-radius: 50%
+		z-index: -1
+		transform: scale(0)
+		transition: all 0.4s ease-out
+	&:hover
+		&::before
+			transform: scale(1)
+	&-left
+		left: 0
+		img
+			width: 250px
+	&-right
+		right: 0
+		img
+			width: 310px
+	img
+		height: auto
+.petal
+	position: absolute
+	height: auto
+	z-index: -1
+	&-1
+		top: 200px
+		width: 20px
+		left: 270px
+	&-2
+		top: 220px
+		width: 64px
+		left: 70px
+	&-3
+		top: 530px
+		width: 70px
+		left: 0
+	&-4
+		top: 740px
+		width: 77px
+		left: 95px
+	&-5
+		top: 790px
+		width: 38px
+		left: 430px
+	&-6
+		top: 710px
+		width: 14px
+		right: 570px
+	&-7
+		top: 810px
+		width: 62px
+		right: 340px
+	&-8
+		top: 720px
+		width: 64px
+		right: 70px
+	&-9
+		top: 480px
+		width: 38px
+		right: 0
+	&-10
+		top: 240px
+		width: 43px
+		right: 70px
+	&-11
+		top: 270px
+		width: 30px
+		right: 420px
+	&-12
+		top: 780px
+		width: 20px
+		left: 30px
+
+
+// Experts
+#experts
+	min-height: 100vh
+	overflow: hidden
+.experts
+	display: flex
+	align-items: stretch
+	justify-content: space-between
+	&-header
+		margin-bottom: 50px
+.expert
+	width: 25%
+	min-height: 650px
+	cursor: pointer
+	position: relative
+	background: transparent
+	transition: background 0.6s
+	will-change: auto
+	&.is-opened
+		background: #f64545
+	&.is-closed
+		min-width: 50px
+	& *
+		transition: color 0.3s
+	&:focus
+		outline: none
+	&:hover
+		background: #f64545
+		& *
+			color: #fff
+		.expert__inner
+			top: 84px
+			transform: translate(-50%, 0) !important
+		.expert__img
+			opacity: 1
+			transform: translateX(0) !important
+	&__inner
+		position: absolute
+		width: 80%
+		top: 50%
+		left: 50%
+		min-height: 84px
+		transition: top 0.3s ease-out
+		transform: translate(-50%, -50%)
+		&.initial
+			transform: translate(-50%, -50%) !important
+	&__title
+		+osnova(md)
+		font-size: 20px
+		color: #333
+		margin-bottom: 20px
+	&__article
+		+osnova(reg)
+		+osnova(lt)
+		font-size: 12px
+		color: #646464
+		padding-right: 20%
+		margin-bottom: 64px
+	&__name
+		+osnova(md)
+		font-size: 14px
+		color: #333
+		margin-bottom: 10px
+	&__desc
+		+osnova(reg)
+		font-size: 12px
+		color: #333
+	&__img
+		position: absolute
+		left: -45px
+		width: 110%
+		transition: all 0.3s ease-out
+		transform: translateX(-100%)
+		opacity: 0
+		pointer-events: none
+		&.initial
+			transform: translateX(-100%) !important
+	
+	&__close
+		position: absolute
+		border: none
+		background: none
+		padding: 0
+		right: 3%
+		top: 5%
+		svg
+			width: 36px
+			height: 36px
+	&__gradient
+		position: absolute
+		bottom: 3%
+		left: 7%
+		width: 48%
+		height: 56px
+		background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,#f64747 100%)
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a6f64747',GradientType=0 )
+	&-opened
+		display: none
+		opacity: 0
+		width: 100%
+		height: 100%
+		padding: 6% 7% 3% 7%
+		background: url(../img/experts/kate.png) no-repeat
+		background-position: 135% bottom
+		background-size: contain
+		position: relative
+		cursor: auto
+		&__inner
+			width: 55%
+			height: 100%
+			overflow-y: scroll
+			-ms-overflow-style: none
+		&__name
+			font-size: 20px
+			color: #fff
+			+phil
+			margin-bottom: 6px
+		&__desc
+			font-size: 12px
+			color: #fff
+			+osnova(lt)
+			margin-bottom: 30px
+		&__title
+			font-size: 34px
+			color: #fff
+			+phil
+			margin-bottom: 22px
+		&__article
+			font-size: 14px
+			color: #fff
+			+osnova(lt)
+			line-height: 1.7
+
+.expert-opened__inner::-webkit-scrollbar
+	width: 0
+	background: transparent
+
+
+
+// Modal
+.modal
+	width: 100%
+	height: 100%
+	display: flex
+	align-items: center
+	justify-content: center
+	&-overlay
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		z-index: 11
+		background: rgba(0, 0, 0, 0.8)
+		display: none
+		align-items: center
+		justify-content: center
+	&-inner
+		width: 350px
+		max-width: 80%
+		height: 80px
+		background: #fff
+		border-radius: 5px
+		display: flex
+		align-items: center
+		justify-content: center
+		transform: translateY(-100%)
+		span
+			font-size: 20px
+	&-close
+		position: absolute
+		top: 20px
+		right: 15px
+		padding-top: 6px
+		background: transparent
+		border: none
+		svg
+			transition: all 0.4s
+		&:hover
+			svg
+				fill: $accent
+@import "media"
