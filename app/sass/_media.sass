@@ -148,6 +148,8 @@
 
 	// Experts
 	.expert
+		&.is-closed
+			min-width: 70px
 		&:hover
 			.expert__inner
 				top: 100px
@@ -182,6 +184,9 @@
 				margin-bottom: 26px
 			&__article
 				font-size: 16px
+		&-closed__title
+			font-size: 16px
+			transform: rotate(90deg) translateX(60px)
 
 @media only screen and (min-width : 1689px)
 	
@@ -334,6 +339,8 @@
 	
 	// Experts
 	.expert
+		&.is-closed
+			min-width: 90px
 		&:hover
 			.expert__inner
 				top: 120px
@@ -368,7 +375,9 @@
 				margin-bottom: 34px
 			&__article
 				font-size: 18px
-
+		&-closed__title
+			font-size: 18px
+			transform: rotate(90deg) translateX(70px)
 @media only screen and (min-width : 1689px) and (min-height : 1000px)
 	.test-link
 		bottom: 7%

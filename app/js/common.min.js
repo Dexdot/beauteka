@@ -45,7 +45,6 @@ $(function() {
 		};
 		setArticlesHeight();
 
-
 		var experts = $('.expert');
 		var innerHeight;
 
@@ -80,19 +79,22 @@ $(function() {
 		setExpertHeight();
 		var finalHeight = +$('.expert').css('height').split('px')[0];
 
-
-
-
+		// Experts animation
 		var tl = new TimelineMax();
 		var easing = Power1.easeOut;
 		var hasCloseHandler;
 
 		$('.expert').on('click', function() {
-
-
 			
 			if ($(this).hasClass('is-opened')) {
 				return;
+			}
+
+			var switching = $('.expert').hasClass('is-opened') && $(this).hasClass('is-closed');
+			if (switching) {
+				tl
+					.to('.expert.is-opened .expert-closed__title', 0, {display: 'none', opacity: 0})
+					.to('.expert-opened', 0.4, {ease: easing, opacity: 0, backgroundPosition: '135% bottom'})
 			}
 
 			var openedContent = $(this).find('.expert-opened');
@@ -112,15 +114,19 @@ $(function() {
 					'+=0.2')
 				.to('.expert.is-closed', 0.4,
 					{ease: easing, width: $('.expert.is-closed').css('min-width')},
-					'-=0.4')
+					switching ? '-=1' : '-=0.4')
 				.to('.expert.is-opened', 0.4,
 					{ease: easing, width: '100%'},
-					'-=0.4')
-				.to(openedContent, 0, {ease: easing, display: 'block'})
-				.to(openedContent, 0.6, {ease: easing, opacity: 1, backgroundPosition: '95% bottom'})
+					switching ? '-=1' : '-=0.4')
+				.to(openedContent, 0, {ease: easing, display: 'block'},
+					switching ? '-=1' : '+=0')
+				.to(openedContent, 0.6, {ease: easing, opacity: 1, backgroundPosition: '95% bottom', cursor: 'auto'},
+					switching ? '-=0.6' : '+=0')
+				.to('.expert.is-closed .expert-closed__title', 0, {display: 'block'}, '-=0.4')
+				.to('.expert.is-closed .expert-closed__title', 0.4, {opacity: 1}, '-=0.4')
 				.fromTo($(openedContent).find('.expert-opened__inner'), 0.6,
 					{ease: easing, y: '70%', opacity: 0},
-					{ease: easing, y: '0%', opacity: 1}, '-=0.6')
+					{ease: easing, y: '0%', opacity: 1}, '-=1')
 
 			
 			var onOpenedClick = function(e) {
@@ -136,23 +142,19 @@ $(function() {
 					var imgStyle = $('.expert__img').attr('style');
 					var opacityIndex = imgStyle.indexOf('opacity: 0');
 					if (opacityIndex != -1) {
-
-						// Убираем "opacity: 0"
 						$('.expert__img').attr('style', imgStyle = imgStyle.slice(0, opacityIndex) + imgStyle.slice(opacityIndex + 10));
 					}
 				};
 				$('.expert').removeClass('is-closed');
-				
+
 				// Сворачивание
 				tl
-					.to(openedContent, 0.4, {ease: easing, opacity: 0, backgroundPosition: '135% bottom'})
-					.fromTo($(openedContent).find('.expert-opened__inner'), 0.4,
-						{ease: easing, y: '0%'},
-						{ease: easing, y: '-120%'})
-					.to(openedContent, 0, {ease: easing, display: 'none'})
+					.to($('.expert-opened'), 0.4, {ease: easing, opacity: 0, backgroundPosition: '135% bottom', cursor: 'pointer'})
+					.to(openedContent, 0, {display: 'none'})
+					.to('.expert-closed__title', 0, {display: 'none'})
+					.to('.expert-closed__title', 0.4, {opacity: 0})
 					.to('.expert', 0.4,
-						{width: '25%', height: finalHeight, onComplete: setInitial},
-						'-=0.4')
+						{width: '25%', height: finalHeight, onComplete: setInitial}, '-=0.4')
 					.fromTo('.expert__inner, .expert__img', 0.1,
 						{ease: easing, y: 100, display: 'block'},
 						{ease: easing, y: 0, display: 'block'})
