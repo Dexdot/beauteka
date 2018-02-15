@@ -1,3 +1,5 @@
+'use strict';
+
 $(function() {
 	// Menu navigation script (toggling)
 		$('.hamburger, .nav__link').click(function() {
@@ -187,7 +189,7 @@ $(function() {
 					switching ? '-=1' : '-=0.4')
 				.to(openedContent, 0, {ease: easing, display: 'block'},
 					switching ? '-=1' : '+=0')
-				.to(openedContent, 0.6, {ease: easing, opacity: 1, backgroundPosition: '95% bottom', cursor: 'auto'},
+				.to(openedContent, 0.4, {ease: easing, opacity: 1, backgroundPosition: '95% bottom', cursor: 'auto'},
 					switching ? '-=0.6' : '+=0')
 				.to('.expert.is-closed .expert-closed__title', 0, {display: 'block'}, '-=0.4')
 				.to('.expert.is-closed .expert-closed__title', 0.4, {opacity: 1}, '-=0.4')
@@ -199,11 +201,7 @@ $(function() {
 			var onOpenedClick = function(e) {
 				e.stopPropagation();
 
-				var setInitial = function() {
-
-					// Возвращаем элементы в исходное состояние (transform)
-					// $('.expert__inner').addClass('initial');
-					// $('.expert__img').addClass('initial');
+				var showImage = function() {
 
 					// Показываем картинку при наведении (убираем opacity: 0 из инлайн-стилей)
 					var imgStyle = $('.expert__img').attr('style');
@@ -221,7 +219,7 @@ $(function() {
 					.to('.expert-closed__title', 0, {display: 'none'})
 					.to('.expert-closed__title', 0.4, {opacity: 0})
 					.to('.expert', 0.4,
-						{width: '25%', height: finalHeight, onComplete: setInitial}, '-=0.4')
+						{width: '25%', height: finalHeight, onComplete: showImage}, '-=0.4')
 					.fromTo('.expert__inner', 0,
 						{ease: easing, x: '-50%', y: '100px'},
 						{ease: easing, x: '-50%', y: '-50%'})
