@@ -186,7 +186,6 @@ body
 
 // Test
 #test
-	padding-top: 5%
 	min-height: 1000px
 	position: relative
 	overflow: hidden
@@ -385,20 +384,23 @@ body
 	&::before
 		content: ''
 		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		height: 100%
+		top: 50%
+		left: 50%
+		width: 90%
+		height: 90%
 		background: #edeef0
 		border-radius: 50%
+		opacity: 0
 		z-index: -1
-		transform: scale(0.01)
+		transform-origin: 0%
+		transform: scale(0) translate(-50%, -50%)
 		transition: 0.2s ease-out
 	&:focus
 		outline: none
 	&:hover
 		&::before
-			transform: scale(1)
+			opacity: 1
+			transform: scale(1) translate(-50%, -50%)
 	&-left
 		left: 0
 		&:hover
@@ -469,7 +471,6 @@ body
 
 // Experts
 #experts
-	min-height: 100vh
 	overflow: hidden
 .experts
 	display: flex
@@ -484,11 +485,10 @@ body
 	position: relative
 	border-left: 1px solid rgba(#587bb1, 0.2)
 	background: transparent
-	transition: background 0.6s
-	transform: translate3d(0,0,0)
-	will-change: width, opacity
+	will-change: width
 	&.is-opened
-		background: #f64545
+		&::before
+			opacity: 1
 		border: none
 		.expert-closed__title
 			opacity: 0 !important
@@ -498,7 +498,6 @@ body
 		.expert-opened
 			display: none !important
 		&:hover
-			border-left: 1px solid rgba(#587bb1, 0.2)
 			background: transparent
 			& *
 				color: #333
@@ -507,7 +506,8 @@ body
 	&:focus
 		outline: none
 	&:hover
-		background: #f64545
+		&::before
+			opacity: 1
 		border: none
 		& *
 			color: #fff
@@ -517,6 +517,27 @@ body
 		.expert__img
 			opacity: 1
 			transform: translateX(0) !important
+	&.bad
+		&::before
+			background: #0063b1
+	&.cosm
+		&::before
+			background: #f64545
+	&.food
+		&::before
+			background: #10893e
+	&.chem
+		&::before
+			background: #ff8c00
+	&::before
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		opacity: 0
+		transition: opacity 0.6s
 	&__inner
 		position: absolute
 		width: 80%
@@ -525,8 +546,8 @@ body
 		min-height: 84px
 		transition: top 0.3s ease-out
 		transform: translate(-50%, -50%)
-		&.initial
-			transform: translate(-50%, -50%) !important
+		// &.initial
+		// 	transform: translate(-50%, -50%) !important
 	&__title
 		+osnova(md)
 		font-size: 20px
@@ -552,12 +573,13 @@ body
 		position: absolute
 		left: -45px
 		width: 110%
-		transition: all 0.3s ease-out
+		transition: all 0.3s ease-in-out
 		transform: translateX(-100%)
 		opacity: 0
 		pointer-events: none
-		&.initial
-			transform: translateX(-100%) !important
+		will-change: transform, opacity
+		// &.initial
+		// 	transform: translateX(-100%) !important
 	
 	&__close
 		position: absolute
@@ -575,8 +597,19 @@ body
 		left: 7%
 		width: 48%
 		height: 56px
-		background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,#f64747 100%)
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a6f64747',GradientType=0 )
+		&.bad
+			background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,#0063b1 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a60063b1',GradientType=0 );
+		&.cosm
+			background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,#f64747 100%)
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a6f64747',GradientType=0 )
+		&.food
+			background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,#10893e 100%)
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a610893e',GradientType=0 )
+		&.chem
+			background: #ff8c00
+			background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,#ff8c00 100%)
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a6ff8c00',GradientType=0 )
 	&-opened
 		display: none
 		opacity: 0
@@ -634,7 +667,7 @@ body
 
 // Products
 #products
-	padding-top: 13%
+	padding-top: 150px
 .products
 	display: flex
 	flex-direction: row
@@ -647,17 +680,22 @@ body
 		+osnova(reg)
 		color: #333
 .product
-	max-width: 25%
+	flex: 1
 	display: flex
 	flex-direction: row
-	justify-content: space-between
-	background: rgba(teal, 0.2)
+	justify-content: flex-start
 	&__img
-		display: block
-		max-width: 100%
-		height: auto
+		width: 107px
+		height: 203px
+		&-2
+			width: 78px
 	&__info
-		margin: 20px 0 0 15px
+		display: flex
+		flex-direction: column
+		justify-content: flex-end
+		width: 60%
+		height: 155px
+		margin: 0 0 0 15px
 	&__title
 		font-size: 20px
 		color: #333
@@ -681,6 +719,8 @@ body
 			transition: 0.2s ease-out
 			backface-visibility: hidden
 			transform-origin: 50% 50%
+		&:focus
+			color: #00b859
 		&:hover
 			color: #00b859
 			.product__link-arrow
