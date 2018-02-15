@@ -1,0 +1,9 @@
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<style type="text/css">
+	.pls{fill:none;stroke:#333333;stroke-width:2;stroke-miterlimit:10;}
+</style>
+<ellipse transform="matrix(0.7071 -0.7071 0.7071 0.7071 -20.7109 49.9995)" class="pls" cx="50" cy="50" rx="47" ry="47"/>
+<line class="pls" x1="50.6" y1="26.5" x2="50.6" y2="74.2"/>
+<line class="pls" x1="74" y1="50.4" x2="26.3" y2="50.4"/>
+</svg>

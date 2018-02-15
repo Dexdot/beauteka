@@ -23,6 +23,56 @@ $(function() {
 			$('.modal-overlay').fadeIn();
 		});
 
+	// Test
+
+		var test = function() {
+			var nextBtn = $('.test-link');
+			var restartBtn = $('.test-card__link');
+			var allTests = $('.test div[data-test]');
+
+			nextBtn.on('click', function(e) {
+				e.preventDefault();
+				allTests.hide();
+
+				var testIndex = +$(this).attr('data-test');
+
+				switch (testIndex) {
+
+					// С листьев на вопросы
+					case 1:
+						testIndex++;
+						$(this).attr('data-test', testIndex);
+						nextBtn.removeClass('is-down');
+						break;
+
+					// С ласт вопроса к итогу
+					case allTests.length - 1:
+						testIndex++;
+						$(this).attr('data-test', testIndex);
+						nextBtn.hide();
+						break;
+					default:
+						testIndex++;
+						$(this).attr('data-test', testIndex);
+						break;
+				}
+
+				// Записываем индекс в атрибут и показываем следующий вопрос
+				$(this).attr('data-test', testIndex);
+				$('.test div[data-test="' + testIndex + '"]').show();
+			});
+
+			// Возвращаемся в начало
+			restartBtn.on('click', function() {
+				allTests.hide();
+				nextBtn.attr('data-test', 1);
+				nextBtn.addClass('is-down');
+				nextBtn.show();
+				$('.test div[data-test="1"]').show();
+			});
+		};
+		test();
+
 	// Experts
 
 		// Задаем всем артиклям высоту, равной максимальной высоте артиклей
@@ -63,7 +113,7 @@ $(function() {
 			// Задаем картинкам нужный top
 			for (var i = 0; i < experts.length; i++) {
 				var img = $(experts[i]).find('.expert__img');
-				$(img).css('top', 80 + innerHeight + innerTop + 'px');
+				$(img).css('top', 20 + innerHeight + innerTop + 'px');
 			}
 		};
 		setImgTop();
@@ -85,6 +135,12 @@ $(function() {
 		var hasCloseHandler;
 
 		$('.expert').on('click', function() {
+
+			var target = '#experts-outer';
+			var top = $(target).offset().top;
+			$('html, body').animate({
+			  scrollTop: top},
+			  400);
 			
 			if ($(this).hasClass('is-opened')) {
 				return;
@@ -98,6 +154,8 @@ $(function() {
 			}
 
 			var openedContent = $(this).find('.expert-opened');
+
+			$('.expert-closed__title').hide();
 
 			$('.expert').addClass('is-closed');
 			$(this).removeClass('is-closed');
@@ -183,16 +241,16 @@ $(function() {
 			}
 		});
 
-		function getMax(numArr) {
-			if (!numArr) return;
-			var max = numArr[0];
-			for (var i = 1; i < numArr.length; i++) {
-				if (numArr[i] > max) {
-					max = numArr[i];
-				}
+	function getMax(numArr) {
+		if (!numArr) return;
+		var max = numArr[0];
+		for (var i = 1; i < numArr.length; i++) {
+			if (numArr[i] > max) {
+				max = numArr[i];
 			}
-			return max;
-		};
+		}
+		return max;
+	};
 
 
 });

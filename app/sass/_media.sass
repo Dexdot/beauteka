@@ -5,7 +5,7 @@
 
 	.section-header
 		font-size: 52px
-		margin-bottom: 20px
+		margin-bottom: 30px
 	.arrow-down
 		height: 110px
 		margin: 54px auto 0 auto
@@ -66,9 +66,10 @@
 			font-size: 28px
 		&-link
 			font-size: 14px
+			width: 245px
 			bottom: 50px
 			&__arrow
-				left: 45px
+				left: 40px
 		&__answer--final
 			max-width: 570px
 		&-final
@@ -147,6 +148,8 @@
 			width: 25px
 
 	// Experts
+	.experts-header
+		margin-bottom: 60px
 	.expert
 		&.is-closed
 			min-width: 70px
@@ -184,15 +187,19 @@
 				margin-bottom: 26px
 			&__article
 				font-size: 16px
-		&-closed__title
-			font-size: 16px
-			transform: rotate(90deg) translateX(60px)
+		&-closed
+			&__title
+				font-size: 16px
+				transform: rotate(90deg) translateX(60px)
+			&__btn
+				width: 28px
+				height: 28px
 
 @media only screen and (min-width : 1689px)
 	
 	.section-header
 		font-size: 64px
-		margin-bottom: 30px
+		margin-bottom: 35px
 	.arrow-down
 		height: 130px
 		margin: 65px auto 0 auto
@@ -226,6 +233,8 @@
 		max-width: 620px
 
 	// Test
+	#test
+		min-height: 1250px // first
 	.test
 		&-head
 			margin-bottom: 130px
@@ -257,8 +266,9 @@
 		&-link
 			font-size: 16px
 			bottom: 0
+			width: 250px
 			&__arrow
-				left: 70px
+				left: 45px
 		&__answer--final
 			max-width: 650px
 		&-final
@@ -338,6 +348,8 @@
 			width: 30px
 	
 	// Experts
+	.experts-header
+		margin-bottom: 70px
 	.expert
 		&.is-closed
 			min-width: 90px
@@ -371,13 +383,17 @@
 				font-size: 16px
 				margin-bottom: 40px
 			&__title
-				font-size: 48px
+				font-size: 42px
 				margin-bottom: 34px
 			&__article
 				font-size: 18px
-		&-closed__title
-			font-size: 18px
-			transform: rotate(90deg) translateX(70px)
+		&-closed
+			&__title
+				font-size: 18px
+				transform: rotate(90deg) translateX(70px)
+			&__btn
+				width: 32px
+				height: 32px
 @media only screen and (min-width : 1689px) and (min-height : 1000px)
 	.test-link
 		bottom: 7%
