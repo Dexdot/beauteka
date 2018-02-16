@@ -192,7 +192,7 @@ body
 	.container
 		position: relative
 .test
-	&-second, 
+	&-second
 		transform: translateY(-50px)
 		margin-bottom: 50px
 		display: none
@@ -284,12 +284,28 @@ body
 			backface-visibility: hidden
 			transform-origin: 50% 50%
 			height: 45px
+			path
+				transition: 0.2s ease-in-out
+				&:first-child
+					fill: #333
+				&:last-child
+					// fill: #00B859
+					animation: circleIn1 1s cubic-bezier(.645,.045,.355,1) forwards
+					transform-origin: 50% 50%
+					stroke: #00b859
+					stroke-dasharray: 350
+					stroke-dashoffset: 350
+					fill: none
 		&.is-down
 			transform: translate(20px, 140px)
+		&:focus
+			color: #333
 		&:hover
 			color: #00B859
 			.test-link__arrow
 				transform: scale(1.14) translate(15px,0)
+				path:last-child
+					animation: mouseoverAnim 1.2s cubic-bezier(.785,.135,.15,.86) forwards
 	&-card
 		box-shadow: 0px 8px 38px 0px rgba(12, 45, 67, 0.1)
 		border-radius: 10px
@@ -359,15 +375,30 @@ body
 			cursor: pointer
 			&-arrow
 				position: absolute
-				top: -50px
+				top: 0px
 				left: 30px
 				width: 140px
 				transition: 0.2s ease-out
-				backface-visibility: hidden
 				transform-origin: 50% 50%
+				path
+					transition: 0.2s ease-in-out
+					&:first-child
+						fill: #333
+					&:last-child
+						// fill: #00B859
+						animation: circleIn1 1s cubic-bezier(.645,.045,.355,1) forwards
+						transform-origin: 50% 50%
+						stroke: #00b859
+						stroke-dasharray: 350
+						stroke-dashoffset: 350
+						fill: none
+			&:focus
+				color: #333
 			&:hover
 				.test-card__link-arrow
 					transform: scale(1.10) translate(15px,0)
+					path:last-child
+						animation: mouseoverAnim 1.2s cubic-bezier(.785,.135,.15,.86) forwards
 				color: #00B859
 		.test__number
 			color: #fff
@@ -660,7 +691,6 @@ body
 	width: 0
 	background: transparent
 
-
 // Products
 #products
 	padding-top: 150px
@@ -717,12 +747,27 @@ body
 			transition: 0.2s ease-out
 			backface-visibility: hidden
 			transform-origin: 50% 50%
+			path
+				transition: 0.2s ease-in-out
+				&:first-child
+					fill: #333
+				&:last-child
+					animation: circleIn1 1s cubic-bezier(.645,.045,.355,1) forwards
+					transform-origin: 50% 50%
+					stroke: #00b859
+					stroke-dasharray: 350
+					stroke-dashoffset: 350
+					fill: none
 		&:focus
 			color: #00b859
 		&:hover
 			color: #00b859
 			.product__link-arrow
-				transform: scale(1.14) translate(15px,0)
+				transform: scale(1.15) translate(15px,0)
+				path
+					&:last-child
+						fill: #00b859
+						animation: mouseoverAnim 1.2s cubic-bezier(.785,.135,.15,.86) forwards
 	&-petal
 		&-1
 			top: 25% // 190px
@@ -739,7 +784,8 @@ body
 			width: 22px
 		&-4
 			top: 62% // 480px
-			left: 1% // 10px
+			// left: 1% // 10px
+			left: 0
 			width: 114px
 			z-index: 1
 		&-5
@@ -784,6 +830,22 @@ body
 			width: 78px
 
 
+@keyframes circleIn1
+	0%
+		stroke-dashoffset: 350
+		transform: rotate(-45deg)
+	100%
+		stroke-dashoffset: 0
+		transform: rotate(0)
+@keyframes mouseoverAnim
+	0%
+		stroke-dashoffset: 0
+		stroke: #00b859
+		transform: rotate(-45deg)
+	100%
+		stroke-dashoffset: 0
+		stroke: #00b859
+		transform: rotate(0)
 
 
 // Modal
