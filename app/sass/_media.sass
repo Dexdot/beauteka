@@ -195,7 +195,6 @@
 				width: 28px
 				height: 28px
 	
-	
 	// Products
 	.products
 		&-desc
@@ -243,6 +242,31 @@
 			&-13
 				width: 92px
 
+	// Subscribe
+	.subscribe
+		margin: 62px auto 20px auto
+		&-desc
+			font-size: 14px
+			width: 40%
+		&__input
+			font-size: 14px
+			padding-bottom: 12px
+			padding-right: 30px
+		&__icon
+			width: 19px
+			height: 19px
+		&__leaf
+			top: calc(50% - 280px)
+			&-left
+				left: -430px
+				width: 790px
+				height: 775px
+			&-right
+				right: -270px
+				width: 540px
+				height: 610px
+	
+
 
 @media only screen and (min-width : 1689px)
 	
@@ -283,7 +307,7 @@
 
 	// Test
 	#test
-		min-height: 1250px // first
+		min-height: 1250px // for first test
 	.test
 		&-head
 			margin-bottom: 130px
@@ -491,6 +515,35 @@
 				width: 50px
 			&-13
 				width: 110px
+	
+	// Subscribe
+	#subscribe
+		min-height: 800px
+	.subscribe
+		margin: 74px auto 20px auto
+		&-desc
+			font-size: 16px
+			width: 37%
+		&__input
+			font-size: 16px
+			padding-bottom: 15px
+			padding-right: 30px
+		&__icon
+			width: 19px
+			height: 19px
+		&__leaf
+			&-left
+				top: calc(50% - 340px)
+				left: -520px
+				width: 940px
+				height: 922px
+			&-right
+				top: calc(50% - 340px)
+				right: -260px
+				width: 643px
+				height: 726px
+
+
 
 @media only screen and (min-width : 1689px) and (min-height : 1000px)
 	.test-link
