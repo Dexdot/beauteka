@@ -53,7 +53,6 @@
 	  </clipPath>
 	</svg>
 
-	<!-- <div class="center"></div> -->
 	
 	<button class="hamburger hamburger--spin" type="button">
 	  <span class="hamburger-box">
@@ -481,10 +480,65 @@
 		<img class="subscribe__leaf subscribe__leaf-right" src="img/subscribe/right.png" alt="Лист">
 	</section>
 
-	<section style="width: 100%;height: 100vh;"></section>
+	<section id="contacts">
+		<div class="container">
+			<h2 class="contacts-header section-header text-center">Контакты</h2>
+			<div class="contacts-wrap">
+				<div class="contacts">
+					<h3 class="contacts__title">Центральный офис сети</h3>
+					<div class="contacts__info">
+						<span class="contacts__info-left">Адрес:</span> 105120, Россия, Москва,<br>
+						<span class="contacts__address">2-й Сыромятнический пер., 1</span>
+					</div>
+					<div class="contacts__info">
+						<span class="contacts__info-left">Телефон:</span> +7 495 230-01-21
+					</div>
+					<ul class="contacts__social social">
+						<li><a href="https://vk.com" target="_blank" class="social__link">VK</a></li>
+						<li><a href="https://facebook.com" target="_blank" class="social__link">FACEBOOK</a></li>
+						<li><a href="https://instagram.com" target="_blank" class="social__link">INSTAGRAM</a></li>
+					</ul>
+				</div>
+				<div class="map-wrap">
+					<div class="map"></div>
+					<div class="map-buttons">
+						<button class="map-button is-active"></button>
+						<button class="map-button"></button>
+						<button class="map-button"></button>
+						<button class="map-button"></button>
+						<button class="map-button"></button>
+						<button class="map-button"></button>
+						<button class="map-button"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer id="footer">
+		<div class="container">
+			<div class="footer">
+				<nav>
+					<ul>
+						<li>
+							<a href="#" class="footer__link">Компания</a>
+							<a href="#" class="footer__link">Каталог</a>
+							<a href="#" class="footer__link">Покупателям</a>
+							<a href="#" class="footer__link">Программа лояльности</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="footer__bottom">
+					<div class="copyright">© ООО "ДрогериМир", 2018<span>Все права защищены</span></div>
+					<a class="developer" target="_blank" href="http://its.agency">Сделано в ITS</a>
+				</div>
+			</div>
+		</div>
+	</footer>
 
 	<link rel="stylesheet" href="css/main.min.css">
 	<script src="js/scripts.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoPi34OMKmyR82Cxyh3psw_5e2r-6RnQs&callback=initMap"></script>
 
 	<!-- Modal -->
 		<div class="modal-overlay">

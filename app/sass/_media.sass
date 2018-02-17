@@ -266,8 +266,77 @@
 				width: 540px
 				height: 610px
 	
+	// Contacts
+	#contacts
+		padding-bottom: 116px
+	.contacts
+		&-header
+			margin-bottom: 58px
+		&__title
+			font-size: 22px
+		&__info
+			margin-top: 33px
+			font-size: 14px
+			&-left
+				width: 60px
+		&__address
+			margin-left: 64px
+		&__social
+			margin-top: 38px
+		&-wrap
+			min-height: 604px
+	.social
+		li
+			margin-bottom: 18px
+		&__link
+			font-size: 14px
+			padding-left: 40px
+			&::before
+				width: 24px
+	.map
+		&-wrap
+			width: 606px
+			height: 606px
+		&-button
+			&::before
+				right: -50px
+				font-size: 14px
+			&:nth-child(1)
+				top: calc(50% - 220px)
+				right: 95px
 
+			&:nth-child(4)
+				top: calc(50% - 28px)
+				right: -6px
+			&:nth-child(5)
+				top: calc(50% + 28px)
+				right: -6px
+				
+			&:nth-child(3)
+				top: calc(50% - 100px)
+				right: 12px
+			&:nth-child(6)
+				top: calc(50% + 100px)
+				right: 12px
+				
+			&:nth-child(2)
+				top: calc(50% - 170px)
+				right: 50px
+			&:nth-child(7)
+				top: calc(50% + 170px)
+				right: 50px
 
+	// Footer
+	.footer
+		&__link
+			font-size: 14px
+			margin-right: 140px
+		&__bottom
+			margin-top: 30px
+	.copyright, .developer
+		font-size: 13px
+	.copyright span
+		margin-left: 28px
 @media only screen and (min-width : 1689px)
 	
 	.section-header
@@ -542,8 +611,73 @@
 				right: -260px
 				width: 643px
 				height: 726px
+	
 
+	// Contacts
+	#contacts
+		padding-bottom: 138px
+	.contacts
+		&-header
+			margin-bottom: 60px
+		&__title
+			font-size: 24px
+		&__info
+			margin-top: 35px
+			font-size: 16px
+			&-left
+				width: 80px
+		&__address
+			margin-left: 84px
+		&__social
+			margin-top: 40px
+		&-wrap
+			min-height: 720px
+	.social
+		li
+			margin-bottom: 20px
+	.map
+		&-wrap
+			width: 722px
+			height: 722px
+		&-button
+			&::before
+				right: -55px
+				font-size: 16px
+			&:nth-child(1)
+				top: calc(50% - 260px)
+				right: 109px
 
+			&:nth-child(4)
+				top: calc(50% - 35px)
+			&:nth-child(5)
+				top: calc(50% + 35px)
+				
+			&:nth-child(3)
+				top: calc(50% - 120px)
+				right: 15px
+			&:nth-child(6)
+				top: calc(50% + 120px)
+				right: 15px
+				
+			&:nth-child(2)
+				top: calc(50% - 200px)
+				right: 58px
+			&:nth-child(7)
+				top: calc(50% + 200px)
+				right: 58px
+
+	
+	// Footer
+	.footer
+		&__link
+			font-size: 16px
+			margin-right: 170px
+		&__bottom
+			margin-top: 35px
+	.copyright, .developer
+		font-size: 14px
+	.copyright span
+		margin-left: 32px
 
 @media only screen and (min-width : 1689px) and (min-height : 1000px)
 	.test-link

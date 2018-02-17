@@ -260,7 +260,268 @@ $(function() {
 			}
 		}
 		return max;
-	};
+};
+
+
+
+	var version = detectIE();
+
+	if (version === false) {
+	  console.log('IE/Edge/Other');
+	  $('.map-button').removeClass('ie');
+	} else if (version >= 12) {
+	  console.log('Edge' + version);
+	} else {
+	  console.log('IE' + version);
+	  $('.map-button').addClass('ie');
+	}
+
+	function detectIE() {
+	  var ua = window.navigator.userAgent;
+
+	  var msie = ua.indexOf('MSIE ');
+	  if (msie > 0) {
+	    // IE 10 or older => return version number
+	    return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+	  }
+
+	  var trident = ua.indexOf('Trident/');
+	  if (trident > 0) {
+	    // IE 11 => return version number
+	    var rv = ua.indexOf('rv:');
+	    return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+	  }
+
+	  var edge = ua.indexOf('Edge/');
+	  if (edge > 0) {
+	    // Edge (IE 12+) => return version number
+	    return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+	  }
+
+	  // other browser
+	  return false;
+	}
 
 
 });
+
+function initMap() {
+	var moscowCenter = {lat: 55.751132, lng: 37.624252};
+	var mapStyles = [
+	  {
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#f5f5f5"
+	      }
+	    ]
+	  },
+	  {
+	    "elementType": "labels.icon",
+	    "stylers": [
+	      {
+	        "visibility": "off"
+	      }
+	    ]
+	  },
+	  {
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#616161"
+	      }
+	    ]
+	  },
+	  {
+	    "elementType": "labels.text.stroke",
+	    "stylers": [
+	      {
+	        "color": "#f5f5f5"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "administrative.land_parcel",
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#bdbdbd"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "poi",
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#eeeeee"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "poi",
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#757575"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "poi.park",
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#e5e5e5"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "poi.park",
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#9e9e9e"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "road",
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#ffffff"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "road.arterial",
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#757575"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "road.highway",
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#dadada"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "road.highway",
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#616161"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "road.local",
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#9e9e9e"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "transit.line",
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#e5e5e5"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "transit.station",
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#eeeeee"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "water",
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#c9c9c9"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "water",
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#9e9e9e"
+	      }
+	    ]
+	  }
+	];
+	
+	var map = new google.maps.Map(document.querySelector('.map'), {
+		center: moscowCenter,
+		disableDefaultUI: true,
+		scrollwheel: true,
+		zoom: 10
+	});
+	map.setOptions({styles: mapStyles});
+
+	var icon = {
+		url: '../img/svg/logo.svg',
+    scaledSize: new google.maps.Size(21, 21)
+	};
+	var locations = [
+		{lat: 55.623292, lng: 37.603828}, // Днепропетровская ул., 2
+		{lat: 55.753743, lng: 37.882196}, // Юбилейный пр., 57
+		{lat: 55.753868, lng: 37.662233}, // 2-й Сыромятнический пер., 1 
+		{lat: 55.761528, lng: 37.585943}, // Ул. Садовая-Кудринская, дом 7
+		{lat: 55.612327, lng: 37.732923}, // Ореховый б-р, 22А
+		{lat: 55.790073, lng: 37.678429} // Сокольническая площадь, 4а
+	];
+	var markers = locations.map(function(location, i) {
+		return new google.maps.Marker({
+			position: locations[i],
+			map: map,
+			icon: icon
+		});
+	});
+
+	var hideMarkers = function() {
+		markers.forEach(function(marker) {
+			marker.setVisible(false);
+		});
+	};
+	var showMarkers = function() {
+		markers.forEach(function(marker) {
+			marker.setVisible(true);
+		});
+	};
+	$('.map-button').on('click', function() {
+		$('.map-button').removeClass('is-active');
+		$(this).addClass('is-active');
+
+		var btnIndex = $(this).index();
+		if (btnIndex === 0) {
+			showMarkers();
+			map.setZoom(10);
+			map.setCenter(moscowCenter);
+		} else {
+			btnIndex--;
+			hideMarkers();
+			markers[btnIndex].setVisible(true);
+			map.setZoom(14);
+			map.setCenter({lat: markers[btnIndex].getPosition().lat(), lng: markers[btnIndex].getPosition().lng()});
+		}
+	});
+}
+
