@@ -52,6 +52,7 @@ body
 	color: #333
 	font-size: 44px
 	margin-bottom: 20px
+	line-height: 1.2
 .text-center
 	text-align: center
 .arrow-down
@@ -170,26 +171,24 @@ body
 		line-height: 1.8
 		margin-top: 30px
 
-// Video logo
 #mask
 	transform: scale(0.003)
-.logo
-	&-video
-		position: absolute
-		transform: translate(-50%, -50%)
-		top: calc(50% + 133px)
-		left: calc(50% + 133px)
-		width: 700px
-		height: 700px
-		z-index: -1
-		& > div
-			clip-path: url(#mask)
+.logo-video
+	position: absolute
+	transform: translate(-50%, -50%)
+	top: calc(50% + 133px)
+	left: calc(50% + 133px)
+	width: 700px
+	height: 700px
+	z-index: -1
+	& > div
+		clip-path: url(#mask)
 
 
 // About
 #about
 	width: 100%
-	min-height: 70vh
+	min-height: 600px
 	position: relative
 .about
 	position: absolute
@@ -306,11 +305,11 @@ body
 			height: 45px
 			path
 				transition: 0.2s ease-in-out
+				transform-origin: 50% 50%
 				&:first-child
 					fill: #333
 				&:last-child
 					animation: circleIn1 1s cubic-bezier(.645,.045,.355,1) forwards
-					transform-origin: 50% 50%
 					stroke: #00b859
 					stroke-dasharray: 350
 					stroke-dashoffset: 350
@@ -469,6 +468,8 @@ body
 	position: absolute
 	height: auto
 	z-index: -1
+	&.nozindex
+		z-index: -1 !important
 	&-1
 		top: 200px
 		width: 20px
@@ -530,7 +531,6 @@ body
 		margin-bottom: 50px
 .expert
 	width: 25%
-	min-height: 650px
 	cursor: pointer
 	position: relative
 	border-left: 1px solid rgba(#587bb1, 0.2)
@@ -542,7 +542,6 @@ body
 		border: none
 		.expert-closed__title
 			opacity: 0 !important
-			display: none !important
 	&.is-closed
 		min-width: 60px
 		.expert-opened
@@ -562,21 +561,36 @@ body
 		& *
 			color: #fff
 		.expert__inner
-			top: 84px
-			transform: translate(-50%, 0) !important
+			transform: translate(-50%, calc(-50% - 84px)) !important
 		.expert__img
 			opacity: 1
 			transform: translateX(0) !important
 	&.bad
+		.expert-opened__img
+			background: url(../img/experts/kate.png) no-repeat
+			background-position: 95% bottom
+			background-size: contain
 		&::before
 			background: #0063b1
 	&.cosm
+		.expert-opened__img
+			background: url(../img/experts/kate.png) no-repeat
+			background-position: 95% bottom
+			background-size: contain
 		&::before
 			background: #f64545
 	&.food
+		.expert-opened__img
+			background: url(../img/experts/kate.png) no-repeat
+			background-position: 95% bottom
+			background-size: contain
 		&::before
 			background: #10893e
 	&.chem
+		.expert-opened__img
+			background: url(../img/experts/kate.png) no-repeat
+			background-position: 95% bottom
+			background-size: contain
 		&::before
 			background: #ff8c00
 	&::before
@@ -594,7 +608,7 @@ body
 		top: 50%
 		left: 50%
 		min-height: 84px
-		transition: top 0.3s ease-out
+		transition: 0.2s ease-out
 		transform: translate(-50%, -50%)
 	&__title
 		+osnova(md)
@@ -657,16 +671,20 @@ body
 			background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,#ff8c00 100%)
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a6ff8c00',GradientType=0 )
 	&-opened
-		display: none
+		pointer-events: none
 		opacity: 0
 		width: 100%
 		height: 100%
 		padding: 6% 7% 3% 7%
-		background: url(../img/experts/kate.png) no-repeat
-		background-position: 135% bottom
-		background-size: contain
 		position: relative
 		cursor: auto
+		&__img
+			position: absolute
+			bottom: 0
+			left: 0
+			width: 100%
+			height: 100%
+			transform: translateX(50%)
 		&__inner
 			width: 50%
 			height: 100%
@@ -694,12 +712,12 @@ body
 			line-height: 1.7
 	&-closed
 		&__title
-			display: none
+			transform: rotate(90deg) translateX(50px)
+			pointer-events: none
 			opacity: 0
 			font-size: 14px
 			color: #333
 			+muller(md)
-			transform: rotate(90deg) translateX(50px)
 			white-space: nowrap
 		&__btn
 			margin-left: 10px
@@ -721,6 +739,7 @@ body
 	flex-direction: row
 	align-items: center
 	justify-content: space-between
+	width: 100%
 	&-desc
 		font-size: 12px
 		max-width: 34%
@@ -732,6 +751,8 @@ body
 	display: flex
 	flex-direction: row
 	justify-content: flex-start
+	&.ie
+		flex: auto
 	&__img
 		width: 107px
 		height: 203px
@@ -854,9 +875,10 @@ body
 #subscribe
 	position: relative
 	overflow: hidden
-	min-height: 700px
-	padding-top: 280px
+	min-height: 830px
+	padding-top: 380px
 	padding-bottom: 40px
+	margin-top: -100px
 .subscribe
 	position: relative
 	display: block
@@ -896,16 +918,25 @@ body
 		transition: 0.2s ease-out
 	&__leaf
 		position: absolute
+		transition: all 0.4s ease-in-out
 		&-left
-			top: 120px
-			left: -332px
-			width: 664px
-			height: 652px
+			width: 800px
+			height: 784px
+			top: 100px
+			left: -320px
+			transform-origin: 0% 100%
+			transform: rotate(15deg)
+			&:hover
+				transform: rotate(-10deg)
 		&-right
-			top: 120px
-			right: -190px
-			width: 455px
-			height: 512px
+			width: 546px
+			height: 673px
+			top: 80px
+			right: -140px
+			transform-origin: 100% 100%
+			transform: rotate(-25deg)
+			&:hover
+				transform: rotate(10deg)
 
 
 // Contacts
@@ -930,11 +961,14 @@ body
 			display: inline-block
 	&__address
 		margin-left: 60px
+	&__phone
+		color: #555
 	&__social
 		margin-top: 35px
 	&-wrap
 		position: relative
 		min-height: 504px
+
 .social
 	li
 		line-height: 1
@@ -1038,38 +1072,38 @@ body
 		&:nth-child(4)
 			transform: translateY(-100%)
 			top: calc(50% - 24px)
-			right: -5px
+			right: -6px
 			&::before
 				content: '2-й Сыромятнический пер., 1'
 		&:nth-child(5)
 			top: calc(50% + 24px)
-			right: -5px
+			right: -6px
 			&::before
-				content: 'Ул. Садовая-Кудринская, дом 7'
+				content: 'Ул. Садовая-Кудринская, 7'
 		
 		&:nth-child(3)
 			transform: translateY(-100%)
 			top: calc(50% - 84px)
 			right: 9px
 			&::before
-				content: 'ТЦ «Новый», Юбилейный проспект, дом 57'
+				content: 'ТЦ «Новый», Юбилейный пр-кт, 57'
 		&:nth-child(6)
 			top: calc(50% + 84px)
 			right: 9px
 			&::before
-				content: 'ТРК «Облака», Ореховый бульвар, дом 22а'
+				content: 'ТРК «Облака», Ореховый б-вар, 22а'
 		
 		&:nth-child(2)
 			transform: translateY(-100%)
 			top: calc(50% - 144px)
 			right: 45px
 			&::before
-				content: 'ТРК «ГлобалСити», Ул. Днепропетровская, дом 2'
+				content: 'ТРК «ГлобалСити», Ул. Днепропетровская, 2'
 		&:nth-child(7)
 			top: calc(50% + 144px)
 			right: 45px
 			&::before
-				content: 'ТЦ «Русское раздолье», Сокольническая площадь, дом 4а'
+				content: 'ТЦ «Русское раздолье», Сокольническая пл., 4а'
 .gmnoprint
 	display: none !important
 
@@ -1078,6 +1112,8 @@ body
 #footer
 	padding-bottom: 40px
 .footer
+	li
+		display: inline-block
 	&__link
 		+osnova(reg)
 		font-size: 13px
@@ -1099,6 +1135,8 @@ body
 	+osnova(reg)
 	font-size: 12px
 	color: rgba(145, 145, 145, 0.7)
+
+
 
 // Modal
 .modal

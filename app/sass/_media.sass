@@ -22,10 +22,9 @@
 		&__desc
 			margin-top: 40px
 			font-size: 14px
-	.logo
-		&-video
-			top: calc(50% + 112px)
-			left: calc(50% + 112px)
+	.logo-video
+		top: calc(50% + 112px)
+		left: calc(50% + 112px)
 	#mask
 		transform: scale(0.0033)
 
@@ -151,11 +150,11 @@
 	.experts-header
 		margin-bottom: 60px
 	.expert
-		&.is-closed
-			min-width: 70px
 		&:hover
 			.expert__inner
-				top: 100px
+				transform: translate(-50%, calc(-50% - 100px)) !important
+		&.is-closed
+			min-width: 70px
 		&__inner
 			min-height: 100px
 		&__title
@@ -243,6 +242,8 @@
 				width: 92px
 
 	// Subscribe
+	#subscribe
+		margin-top: -80px
 	.subscribe
 		margin: 62px auto 20px auto
 		&-desc
@@ -256,15 +257,10 @@
 			width: 19px
 			height: 19px
 		&__leaf
-			top: calc(50% - 280px)
 			&-left
-				left: -430px
-				width: 790px
-				height: 775px
+				left: -350px
 			&-right
-				right: -270px
-				width: 540px
-				height: 610px
+				right: -150px
 	
 	// Contacts
 	#contacts
@@ -497,7 +493,7 @@
 			min-width: 90px
 		&:hover
 			.expert__inner
-				top: 120px
+				transform: translate(-50%, calc(-50% - 120px)) !important
 		&__inner
 			min-height: 120px
 		&__title
@@ -587,7 +583,9 @@
 	
 	// Subscribe
 	#subscribe
-		min-height: 800px
+		padding-top: 470px
+		min-height: 970px
+		margin-top: -110px
 	.subscribe
 		margin: 74px auto 20px auto
 		&-desc
@@ -602,15 +600,11 @@
 			height: 19px
 		&__leaf
 			&-left
-				top: calc(50% - 340px)
-				left: -520px
-				width: 940px
-				height: 922px
+				width: 952px
+				height: 933px
 			&-right
-				top: calc(50% - 340px)
-				right: -260px
-				width: 643px
-				height: 726px
+				width: 650px
+				height: 801px
 	
 
 	// Contacts
@@ -686,6 +680,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 @media only screen and (max-width : 1199px)
 
 	// Main
@@ -699,12 +703,133 @@
 		&__desc
 			font-size: 11px
 	.logo-video
-		top: calc(50% + 157px)
-		left: calc(50% + 157px)
+		top: calc(50% + 144px)
+		left: calc(50% + 144px)
 		width: 650px
 		height: 650px
 	#mask
-		transform: scale(0.0025)
+		transform: scale(0.0027)
+
+	// About
+	.about
+		padding-left: 4%
+
+
+	// Test
+	.leaf
+		width: 286px
+		height: 286px
+		&-left img
+			width: 207px
+		&-right img
+			width: 257px
+	$offset: 55px
+	.petal
+		&-1
+			top: 200px + $offset
+		&-2
+			top: 220px + $offset
+		&-3
+			top: 530px + $offset
+		&-4
+			top: 740px + $offset
+		&-5
+			top: 790px + $offset
+		&-6
+			top: 710px + $offset
+		&-7
+			top: 810px + $offset
+		&-8
+			top: 720px + $offset
+		&-9
+			top: 480px + $offset
+		&-10
+			top: 240px + $offset
+		&-11
+			top: 270px + $offset
+		&-12
+			top: 780px + $offset
+
+	
+	// Experts
+	.expert
+		&-opened
+			&__img
+				height: 85%
+
+	
+	// Products
+	.product
+		&__img
+			width: 77px
+			height: 146px
+			&-2
+				width: 56px
+		&__info
+			margin: -30px 0 0 25px
+		&__title
+			font-size: 18px
+			br
+				display: none
+		&-petal
+			&-4
+				display: none
+	
+
+	// Subscribe
+	#subscribe
+		margin-top: -80px
+		padding-top: 340px
+		min-height: 700px
+	.subscribe
+		width: 22%
+		&__leaf
+			&-left
+				top: 80px
+				width: 663px
+				height: 649px
+			&-right
+				top: 60px
+				width: 452px
+				height: 557px
+	
+
+	// Contacts
+	$mapSize: 420px
+	.contacts
+		&-wrap
+			min-height: $mapSize
+	.map
+		&-wrap
+			width: $mapSize
+			height: $mapSize
+		&-button
+			&::before
+				right: -25px
+			&:nth-child(1)
+				top: calc(50% - 182px)
+				right: 112px
+
+			&:nth-child(4)
+				top: calc(50% - 20px)
+			&:nth-child(5)
+				top: calc(50% + 20px)
+			
+			&:nth-child(3)
+				top: calc(50% - 80px)
+				right: 12px
+			&:nth-child(6)
+				top: calc(50% + 80px)
+				right: 12px
+			
+			&:nth-child(2)
+				top: calc(50% - 140px)
+				right: 54px
+			&:nth-child(7)
+				top: calc(50% + 140px)
+				right: 54px
+
+
 
 @media only screen and (max-width : 991px) 
 
@@ -716,8 +841,205 @@
 			font-size: 48px
 		&__desc
 			margin-top: 20px
+	.logo-video
+		top: calc(50% + 150px)
+		left: calc(50% + 150px)
+		width: 620px
+		height: 620px
+	#mask
+		transform: scale(0.0025)
+	
 
-@media only screen and (max-width : 767px) 
+	// About
+	.about
+		padding-left: 0
+		max-width: 45%
+		&__desc
+			max-width: 100%
+
+
+	// Test
+	.test
+		&-second
+			transform: translateY(0)
+		&__btn
+			width: 32%
+			min-height: 84px
+			margin-left: 8px
+			margin-right: 8px
+		&__text
+			font-size: 24px
+		&-link
+			height: 50px
+			&__arrow
+				height: 40px
+			&.is-down
+				transform: translate(20px, 180px)
+	.leaf
+		width: 221px
+		height: 221px
+		bottom: -35%
+		&-left img
+			width: 160px
+		&-right img
+			width: 200px
+	$coeff: 1.3
+	.petal
+		&-1
+			width: 20px / $coeff
+		&-2
+			width: 64px / $coeff
+		&-3
+			width: 70px / $coeff
+		&-4
+			width: 77px / $coeff
+		&-5
+			width: 38px / $coeff
+		&-6
+			width: 14px / $coeff
+		&-7
+			width: 62px / $coeff
+		&-8
+			width: 64px / $coeff
+		&-9
+			width: 38px / $coeff
+		&-10
+			width: 43px / $coeff
+		&-11
+			width: 30px / $coeff
+		&-12
+			width: 20px / $coeff
+
+	
+	// Experts
+	.expert
+		&:hover
+			.expert__inner
+				transform: translate(-50%,calc(-50% - 15px))!important
+		&__inner
+			width: 90%
+			top: 40%
+		&__title
+			font-size: 18px
+		&__article
+			padding-right: 5%
+			margin-bottom: 40px
+			font-size: 13px
+		&-opened
+			&__inner
+				width: 60%
+			&__img
+				height: 75%
+				width: 107%
+		&__gradient
+			bottom: 0
+			height: 60px
+			width: 52%
+
+
+	// Products
+	.products
+		flex-wrap: wrap
+		&-desc
+			max-width: 45%
+			margin: 0 auto 52px auto
+	.product
+		margin-top: 40px
+		justify-content: center
+		&__info
+			width: auto
+			&.ie
+				width: 160px
+			max-width: 180px
+		$prPetal: 1.3
+		&-petal
+			&-1
+				width: 20px / $prPetal
+			&-2
+				width: 88px / $prPetal
+				z-index: 1
+			&-3
+				width: 22px / $prPetal
+			&-4
+				left: 0 / $prPetal
+				width: 114px
+				z-index: 1
+			&-5
+				width: 35px / $prPetal
+			&-6
+				width: 68px / $prPetal
+				z-index: 1
+			&-7
+				width: 22px / $prPetal
+				transform: scale(-1, 1)
+			&-8
+				width: 40px / $prPetal
+				z-index: 1
+			&-9
+				width: 33px / $prPetal
+			&-10
+				width: 114px / $prPetal
+				z-index: 1
+			&-11
+				width: 22px / $prPetal
+			&-12
+				width: 36px / $prPetal
+			&-13
+				width: 78px / $prPetal
+
+	
+	// Subscribe
+	#subscribe
+		padding-top: 320px
+		min-height: 700px
+	.subscribe
+		width: 30%
+		&__leaf
+			&-left
+				width: 510px
+				height: 533px
+			&-right
+				width: 347px
+				height: 428px
+				right: -180px
+
+
+	
+	// Contacts
+	$mapSize: 420px
+	#contacts
+		padding-bottom: 0px
+	.contacts
+		padding-top: $mapSize + 40
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: space-between
+		&__info
+			font-size: 13px
+			br
+				display: none
+		&__address
+			margin-left: 0
+		&-wrap
+			min-height: $mapSize * 1.8
+	.map
+		&-wrap
+			width: $mapSize
+			height: $mapSize
+			left: 0
+			transform: translate(0, 0)
+
+
+	// Footer
+	.footer__link
+		margin-right: 90px
+
+@media only screen and (max-width : 767px)
+
+	.section-header
+		font-size: 38px
+
 
 	// Main
 	.hamburger 
@@ -732,13 +1054,173 @@
 		flex-direction: column
 		align-items: center
 		justify-content: center
-		background: #aeaeae
+		background: #00b859
 		z-index: 5
 		line-height: 3
 		transform: translateX(100%)
 		transition: transform 0.3s ease-out
 		&.is-active
 			transform: translateX(0)
+	.blur
+		transform: scale(1.03)
+	.main
+		left: 9%
+	.logo-video
+		top: calc(50% + 146px)
+		left: calc(50% + 146px)
+		width: 600px
+		height: 600px
+
+
+	// About
+	#about
+		min-height: 800px
+	.about
+		max-width: calc(100% - 30px)
+		top: 65%
+
+
+	// Test
+	.test
+		&__btns
+			margin: 10px auto 30px auto
+			flex-wrap: wrap
+		&__btn
+			margin-top: 20px
+			min-width: 200px
+			max-width: 300px
+			flex: 1
+			font-size: 11px
+			margin-left: 4px
+			margin-right: 4px
+			br
+				display: none
+		&__question
+			font-size: 18px
+		&__answer
+			max-width: 80%
+			br
+				display: none
+		&__text
+			font-size: 22px
+		&-link
+			&.is-down
+				transform: translate(20px, 230px)
+		&__number
+			font-size: 18px
+			span
+				font-size: 32px
+		&-card
+			width: 100%
+			max-width: 500px
+			padding: 16px
+			margin: 0 auto 34px auto
+			&__cover
+				padding: 44px 8px 12px 8px
+			&__logo
+				width: 100px
+				height: 30px
+			&__title
+				font-size: 30px
+			&__info
+				font-size: 13px
+				margin-top: 6px
+				margin-bottom: 30px
+			&__social
+				width: 30px
+				height: 30px
+				margin-left: 10px
+			&__link
+				transform: translate(-55px, -10px)
+				&-arrow
+					width: 120px
+					left: 45px
+		&-final
+			&__arrow
+				width: 55px
+				height: 78px
+				margin-top: 20px
+	.leaf
+		width: 31vw
+		height: 31vw
+		bottom: -30%
+		&-left img
+				width: 25vw
+		&-right img
+				width: 28vw
+	$coeff: 2
+	.petal
+		&-1
+			width: 20px / $coeff
+		&-2
+			width: 64px / $coeff
+		&-3
+			width: 70px / $coeff
+		&-4
+			width: 77px / $coeff
+		&-5
+			width: 38px / $coeff
+		&-6
+			width: 14px / $coeff
+		&-7
+			width: 62px / $coeff
+		&-8
+			width: 64px / $coeff
+		&-9
+			width: 38px / $coeff
+		&-10
+			width: 43px / $coeff
+		&-11
+			width: 30px / $coeff
+		&-12
+			width: 20px / $coeff
+
+
+	// Products
+	.products
+		&-desc
+			max-width: 75%
+
+
+	// Subscribe
+	#subscribe
+		padding-top: 220px
+		min-height: 600px
+	.subscribe
+		width: 50%
+		&-desc
+			width: 70%
+		&__leaf
+			&-left
+				width: 463px
+				height: 484px
+			&-right
+				width: 315px
+				height: 389px
+
+
+	// Contacts
+	// $mapSize: 420px
+	#contacts
+		padding-bottom: 60px
+	.contacts
+		padding-top: 0
+		&-wrap
+			min-height: auto
+		&__info
+			text-align: center
+	.map
+		&-wrap
+			display: none
+	// 		width: $mapSize
+	// 		height: $mapSize
+
+	// Footer
+	.footer__link
+		margin-right: 20px
+
+
+
 
 
 // @media only screen and (max-width : 480px) 
