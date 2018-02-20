@@ -961,8 +961,7 @@
 			&-3
 				width: 22px / $prPetal
 			&-4
-				left: 0 / $prPetal
-				width: 114px
+				width: 114px / $prPetal
 				z-index: 1
 			&-5
 				width: 35px / $prPetal
@@ -1044,6 +1043,12 @@
 	// Main
 	.hamburger 
 		display: block
+	.header
+		&__inner
+			align-items: center
+		&__logo svg
+			width: 38px
+			height: 38px
 	.nav 
 		width: 100%
 		height: 100%
@@ -1065,6 +1070,7 @@
 		transform: scale(1.03)
 	.main
 		left: 9%
+		&__desc
 	.logo-video
 		top: calc(50% + 146px)
 		left: calc(50% + 146px)
@@ -1198,31 +1204,235 @@
 				width: 315px
 				height: 389px
 
-
 	// Contacts
-	// $mapSize: 420px
 	#contacts
 		padding-bottom: 60px
 	.contacts
+		display: block
 		padding-top: 0
 		&-wrap
 			min-height: auto
+		&-header
+			margin-bottom: 40px
 		&__info
-			text-align: center
+			text-align: left
+			+osnova(md)
+			color: #333
+			&-left
+				+osnova(reg)
+				color: #555
+				display: block
+				margin-bottom: 8px
+			br
+				display: inline
 	.map
 		&-wrap
 			display: none
-	// 		width: $mapSize
-	// 		height: $mapSize
-
+		&-mob
+			display: block
+	.social__link
+		+osnova(md)
+		color: #333
 	// Footer
 	.footer__link
 		margin-right: 20px
 
 
+@media only screen and (max-width : 480px)
+
+	.section-header
+		font-size: 26px
+
+	// Main
+	#main
+		min-height: 550px
+	.header
+		&__logo svg
+			width: 32px
+			height: 32px
+	.logo-video
+		top: calc(50% + 109px)
+		left: calc(50% + 109px)
+		width: 450px
+		height: 450px
+	.main
+		left: 15px
+		top: calc(50% + 40px)
+		&__header
+			font-size: 40px
+		&__desc
+			margin-top: 180px
+			font-size: 13px
+	.blur
+		transform: scale(1.17)
+
+	// About
+	#about
+		min-height: 750px
+	.about
+		&__desc
+			font-size: 13px
 
 
+	// Test
+	#test
+		min-height: 630px
+	.test
+		&-final
+			transform: translateY(0)
+		&-card
+			padding: 10px
+			&__logo
+				width: 80px
+				height: 24px
+			&__title
+				font-size: 24px
+			&__info
+				font-size: 12px
+				margin-top: 12px
+			&__footer
+				flex-direction: column
+				align-items: flex-start
+				justify-content: flex-start
+				height: 90px
+			&__link
+				transform: translate(0px,10px)
+		&__btns
+			flex-direction: column
+		&__btn
+			flex: auto
+			min-width: 260px
+		&-desc
+			font-size: 13px
+		&-head
+			margin-bottom: 20px
+		&__tip
+			font-size: 13px
+			margin: 10px 0 6px 0
+		&__text
+			font-size: 18px
+		&__number
+			font-size: 14px
+			span
+				font-size: 24px
+	$coeff: 3
+	.petal
+		&-1
+			width: 20px / $coeff
+		&-2
+			width: 64px / $coeff
+		&-3
+			width: 70px / $coeff
+		&-4
+			width: 77px / $coeff
+		&-5
+			width: 38px / $coeff
+		&-6
+			width: 14px / $coeff
+		&-7
+			width: 62px / $coeff
+		&-8
+			width: 64px / $coeff
+		&-9
+			width: 38px / $coeff
+		&-10
+			width: 43px / $coeff
+		&-11
+			width: 30px / $coeff
+		&-12
+			width: 20px / $coeff
+	.leaf
+		width: 35vw
+		height: 35vw
 
-// @media only screen and (max-width : 480px) 
+	
+	// Products
+	#products
+		padding-top: 80px
+	.products
+		&-desc
+			font-size: 13px
+			max-width: 80%
+	.product
+		$prPetal: 2
+		&-petal
+			&-1
+				width: 20px / $prPetal
+				z-index: -1
+			&-2
+				width: 88px / $prPetal
+				z-index: -1
+			&-3
+				width: 22px / $prPetal
+				z-index: -1
+			&-4
+				width: 114px / $prPetal
+				z-index: -1
+			&-5
+				width: 35px / $prPetal
+				z-index: -1
+			&-6
+				width: 68px / $prPetal
+				z-index: -1
+			&-7
+				width: 22px / $prPetal
+				z-index: -1
+			&-8
+				width: 40px / $prPetal
+				z-index: -1
+			&-9
+				width: 33px / $prPetal
+				z-index: -1
+			&-10
+				width: 114px / $prPetal
+				z-index: -1
+			&-11
+				width: 22px / $prPetal
+				z-index: -1
+			&-12
+				width: 36px / $prPetal
+				z-index: -1
+			&-13
+				width: 78px / $prPetal
+				z-index: -1
+	
+	
+	// Subscribe
+	.subscribe
+		&__leaf
+			&-left
+				width: 400px
+				height: 418px
+				top: 200px
+				left: -120px
+				transform: rotate(-15deg)
+				&:hover
+					transform: rotate(-50deg)
+			&-right
+				transform: rotate(0deg)
+				width: 272px
+				height: 336px
+				right: -110px
+				top: 150px
+				&:hover
+					transform: rotate(50deg)
+
+	#contacts
+		padding-bottom: 30px
+	.footer
+		li
+			display: block
+			margin-bottom: 8px
+		&__link
+			+osnova(md)
+			color: #333
+		&__bottom
+			align-items: flex-start
+	.copyright span
+		margin-left: 0
+		margin-top: 6px
+		display: block
+
+
 
 // @media only screen and (max-width : 330px) 

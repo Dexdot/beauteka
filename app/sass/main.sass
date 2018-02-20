@@ -60,7 +60,7 @@ body
 	height: 90px
 	margin: 45px auto 0 auto
 	display: block
-@keyframes circleIn1
+@keyframes circleIn
 	0%
 		stroke-dashoffset: 350
 		transform: rotate(-45deg)
@@ -207,7 +207,7 @@ body
 #test
 	min-height: 1000px
 	position: relative
-	overflow-x: hidden
+	overflow: hidden
 	.container
 		position: relative
 .test
@@ -309,7 +309,7 @@ body
 				&:first-child
 					fill: #333
 				&:last-child
-					animation: circleIn1 1s cubic-bezier(.645,.045,.355,1) forwards
+					animation: circleIn 1s cubic-bezier(.645,.045,.355,1) forwards
 					stroke: #00b859
 					stroke-dasharray: 350
 					stroke-dashoffset: 350
@@ -391,6 +391,7 @@ body
 			transform: translate(-60px, -15px)
 			transition: color 0.2s ease-out
 			cursor: pointer
+			white-space: nowrap
 			&-arrow
 				position: absolute
 				top: 0px
@@ -404,7 +405,7 @@ body
 						fill: #333
 					&:last-child
 						// fill: #00B859
-						animation: circleIn1 1s cubic-bezier(.645,.045,.355,1) forwards
+						animation: circleIn 1s cubic-bezier(.645,.045,.355,1) forwards
 						transform-origin: 50% 50%
 						stroke: #00b859
 						stroke-dasharray: 350
@@ -747,12 +748,10 @@ body
 		+osnova(reg)
 		color: #333
 .product
-	flex: 1
+	flex: auto
 	display: flex
 	flex-direction: row
 	justify-content: flex-start
-	&.ie
-		flex: auto
 	&__img
 		width: 107px
 		height: 203px
@@ -793,7 +792,7 @@ body
 				&:first-child
 					fill: #333
 				&:last-child
-					animation: circleIn1 1s cubic-bezier(.645,.045,.355,1) forwards
+					animation: circleIn 1s cubic-bezier(.645,.045,.355,1) forwards
 					transform-origin: 50% 50%
 					stroke: #00b859
 					stroke-dasharray: 350
@@ -980,6 +979,7 @@ body
 		text-transform: uppercase
 		position: relative
 		padding-left: 34px
+		letter-spacing: 0.15em
 		&::before
 			content: ''
 			background: #333
@@ -1032,6 +1032,27 @@ body
 		pointer-events: none
 		opacity: 0.2
 		background: linear-gradient(150deg, #9dc2ff 1%, #f2c3ac 99%)
+	&-mob
+		display: none
+		width: calc(100% + 30px)
+		margin-left: -15px
+		height: 400px
+		margin-bottom: 40px
+		position: relative
+		& *:focus
+			outline: none
+		&::after
+			position: absolute
+			z-index: 1
+			top: 0
+			left: 0
+			display: block
+			width: 100%
+			height: 100%
+			content: ''
+			pointer-events: none
+			opacity: 0.2
+			background: linear-gradient(150deg, #9dc2ff 1%, #f2c3ac 99%)
 	&-button
 		position: absolute
 		border-radius: 50%
@@ -1137,47 +1158,4 @@ body
 	color: rgba(145, 145, 145, 0.7)
 
 
-
-// Modal
-.modal
-	width: 100%
-	height: 100%
-	display: flex
-	align-items: center
-	justify-content: center
-	&-overlay
-		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		height: 100%
-		z-index: 11
-		background: rgba(0, 0, 0, 0.8)
-		display: none
-		align-items: center
-		justify-content: center
-	&-inner
-		width: 350px
-		max-width: 80%
-		height: 80px
-		background: #fff
-		border-radius: 5px
-		display: flex
-		align-items: center
-		justify-content: center
-		transform: translateY(-100%)
-		span
-			font-size: 20px
-	&-close
-		position: absolute
-		top: 20px
-		right: 15px
-		padding-top: 6px
-		background: transparent
-		border: none
-		svg
-			transition: all 0.4s
-		&:hover
-			svg
-				fill: $accent
 @import "media"

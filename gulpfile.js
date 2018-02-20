@@ -47,8 +47,13 @@ gulp.task('common-js', function() {
 gulp.task('js', ['common-js'], function() {
 	return gulp.src([
 		'app/libs/jquery/jquery.min.js',
+		
 		'app/libs/vide/vide.js',
 		'app/libs/gsap/gsap.js',
+
+		'app/libs/scrollmagic/scrollmagic.js',
+		'app/libs/scrollmagic/debug.addIndicators.min.js',
+
 		'app/js/common.min.js'
 		])
 	.pipe(plumber())
@@ -62,8 +67,8 @@ gulp.task('browser-sync', function() {
 	browserSync({
 		server: {
 			// host: "192.168.1.103",
-			// host: "192.168.1.108",
-			host: "172.20.10.2",
+			host: "192.168.1.108",
+			// host: "172.20.10.2",
 			baseDir: 'app'
 		},
 		notify: false,
