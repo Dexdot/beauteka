@@ -729,6 +729,114 @@ body
 	width: 0
 	background: transparent
 
+.expert-mob
+	&.bad
+		background: #5996ca
+		.expert-mob-opened__img
+			background: url(../img/experts/kate.png) no-repeat #4c8bc0
+			background-position: center 25%
+			background-size: 90%
+	&.cosm
+		background: #ea5252
+		.expert-mob-opened__img
+			background: url(../img/experts/kate.png) no-repeat #e34242
+			background-position: center 25%
+			background-size: 90%
+	&.food
+		background: #45bb7e
+		.expert-mob-opened__img
+			background: url(../img/experts/kate.png) no-repeat #35b070
+			background-position: center 25%
+			background-size: 90%
+	&.chem
+		background: #eab34c		
+		.expert-mob-opened__img
+			background: url(../img/experts/kate.png) no-repeat #e0a73d
+			background-position: center 25%
+			background-size: 90%
+	&__inner
+		padding: 52px 50px 20px 20px
+	&__title
+		+osnova(md)
+		color: #fff
+		font-size: 18px
+	&__article
+		+osnova(lt)
+		color: #fff
+		font-size: 13px
+		line-height: 21px
+		margin-top: 30px
+		margin-bottom: 30px
+	&__name
+		+osnova(md)
+		color: #fff
+		font-size: 14px
+		margin-bottom: 13px
+	&__desc
+		+osnova(lt)
+		color: #fff
+		font-size: 12px
+		margin-bottom: 30px
+	&__img
+		display: block
+		max-width: 400px
+		width: 100%
+		padding-bottom: 45px
+		height: auto
+.expert-mob-opened
+	width: 100%
+	height: 100%
+	padding: 40px 28px 50px 18px
+	position: relative
+	display: none
+	opacity: 0
+	&__close
+		padding: 0
+		border: none
+		background: transparent
+		position: absolute
+		top: 16px
+		right: 13px
+		&:focus
+			outline: none
+	&__icon
+		width: 23px
+		height: 23px
+	&__head
+		display: flex
+		flex-direction: row
+		align-items: center
+		justify-content: flex-start
+		margin-bottom: 24px
+		div:last-child
+			margin-left: 18px
+	&__img
+		min-width: 97px
+		min-height: 97px
+		width: 97px
+		height: 97px
+		border-radius: 50%
+	&__name
+		+osnova(reg)
+		color: #fff
+		font-size: 14px
+	&__desc
+		+osnova(lt)
+		color: #fff
+		font-size: 12px
+	&__title
+		+osnova(md)
+		color: #fff
+		font-size: 24px
+		margin-bottom: 30px
+		line-height: 1.4
+	&__article
+		+osnova(lt)
+		color: #fff
+		font-size: 13px
+		p
+			margin-bottom: 15px
+
 // Products
 #products
 	padding-top: 150px
