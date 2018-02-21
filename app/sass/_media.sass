@@ -699,8 +699,6 @@
 
 
 
-
-
 @media only screen and (max-width : 1199px)
 	
 	@keyframes tra
@@ -1086,6 +1084,10 @@
 		transition: transform 0.3s ease-out
 		&.is-active
 			transform: translateX(0)
+		&__link.desk
+			display: none
+		&__link.mob
+			display: block
 	.blur
 		transform: scale(1.03)
 	.main

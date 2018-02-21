@@ -19,43 +19,48 @@ $(function() {
 		});
 
 	// Main
-		var setLogoVideoTop = function() {
-			var height = $('#main').height() / 2;
-			var coef = 0, mqFlag = 0;
+		$('.logo-video').addClass('anim');
+
+		var setTops = function() {
+			var height = $('#main').height();
+			var logoVideoCoef = 0, mqFlag = 0;
 			mediaQueries(3000, function() {
 				mqFlag = 3000;
-				coef = 96;
+				logoVideoCoef = 96;
+				$('.main').css('top', height / 2 - 40 + 'px');
 			});
 			mediaQueries(1689, function() {
 				mqFlag = 1689;
-				coef = 112;
+				logoVideoCoef = 112;
 			});
 			mediaQueries(1399, function() {
 				mqFlag = 1399;
-				coef = 133;
+				logoVideoCoef = 133;
 			});
 			mediaQueries(1199, function() {
 				mqFlag = 1199;
-				coef = 144;
+				logoVideoCoef = 144;
 			});
 			mediaQueries(991, function() {
 				mqFlag = 991;
-				coef = 150;
+				logoVideoCoef = 150;
+				$('.main').css('top', height / 2 - 20 + 'px');
 			});
 			mediaQueries(767, function() {
 				mqFlag = 767;
-				coef = 146;
+				logoVideoCoef = 146;
 			});
 			mediaQueries(480, function() {
 				mqFlag = 480;
-				coef = 109;
+				logoVideoCoef = 109;
+				$('.main').css('top', height / 2 + 40 + 'px');
 			});
-			height += coef;
+			height = height / 2 + logoVideoCoef;
 			$('.logo-video').css('top', height + 'px');
 		};
-		setLogoVideoTop();
+		setTops();
 		$(window).on('resize', function() {
-			setLogoVideoTop();
+			setTops();
 		});
 
 	// Test
@@ -384,19 +389,49 @@ $(function() {
 
 	// Scroll Magic
 
-		var controller = new ScrollMagic.Controller({
-			globalSceneOptions: {
-				triggerHook: 'onLeave'
-			}
-		});
+		// Controller
+			var controller = new ScrollMagic.Controller({
+				globalSceneOptions: {
+					triggerHook: 'onLeave'
+				}
+			});
 
-		var mainSection = document.querySelector('section#main');
-		new ScrollMagic.Scene({
-			triggerElement: mainSection
-		})
-		.setPin(mainSection)
-		.addIndicators()
-		.addTo(controller);
+		// Main section scene
+			var mainSection = document.querySelector('section#main');
+			new ScrollMagic.Scene({
+				triggerElement: mainSection
+			})
+			.setPin(mainSection)
+			.addIndicators({name: 'Main section'})
+			.addTo(controller);
+
+		// Main text scene
+
+			var mainTextTween = new TimelineMax()
+			.to('.main', 2, {ease: easing, opacity: 0}, 'l')
+
+			var mainText = document.querySelector('.main');
+			new ScrollMagic.Scene({
+				triggerElement: mainSection,
+				duration: '70%'
+			})
+			.setTween(mainTextTween)
+			.setPin(mainText)
+			.addIndicators()
+			.addTo(controller);
+
+		// Logo video scene
+			var logoVideoTween = new TimelineMax()
+			.to('.logo-video', 2, {ease: easing, x: '-5%'}, 'l')
+
+			new ScrollMagic.Scene({
+				triggerElement: mainSection,
+				duration: '100%'
+			})
+			.setTween(logoVideoTween)
+			.setPin('.logo-video')
+			.addIndicators({name: 'logo-video'})
+			.addTo(controller);
 
 		// Воспроизведение видео после загрузки Scroll Magic
 		var videos = document.querySelectorAll('video');
@@ -409,7 +444,7 @@ $(function() {
 			var main = $('#main');
 			if (window.pageYOffset > main.height()) {
 				videos.forEach(function(v) {
-					v.stop();
+					v.pause();
 				});
 			} else {
 				videos.forEach(function(v) {

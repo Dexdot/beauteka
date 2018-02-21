@@ -19,21 +19,6 @@ var	gulp           = require('gulp'),
 		plumber        = require('gulp-plumber'),
 		rsync          = require('gulp-rsync');
 
-
-gulp.task('kam-css', function() {
-	return gulp.src([
-		'style.css',
-		])
-	.pipe(postcss([ autoprefixer({
-	    browsers: ['last 3 versions'],
-	    cascade: false
-	  }),
-	  mqpacker()
-	  ]))
-	.pipe(cleanCSS())
-	.pipe(gulp.dest('./'));
-});
-
 gulp.task('common-js', function() {
 	return gulp.src([
 		'app/js/common.js',
@@ -52,6 +37,7 @@ gulp.task('js', ['common-js'], function() {
 		'app/libs/gsap/gsap.js',
 
 		'app/libs/scrollmagic/scrollmagic.js',
+		'app/libs/scrollmagic/animation.gsap.js',
 		'app/libs/scrollmagic/debug.addIndicators.min.js',
 
 		'app/js/common.min.js'
