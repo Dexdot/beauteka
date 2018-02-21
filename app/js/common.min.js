@@ -171,11 +171,10 @@ $(function() {
 			}
 		});
 
-		// Experts animation
+		// Experts desktop animation
 		var tl = new TimelineMax();
 		var easing = Power1.easeInOut;
 		var hasCloseHandler;
-
 		$('.expert').on('click', function() {
 			var target = '#experts-outer';
 			var top = $(target).offset().top;
@@ -217,7 +216,7 @@ $(function() {
 				.to('.expert__inner, .expert__img', 0.3,
 					{ease: easing, opacity: 0, y: 100})
 				.to('.expert', 0.4,
-					{ease: easing, height: '100vh'},
+					{ease: easing, height: '100vh'}, 
 					'+=0.2')
 				.to('.expert.is-closed', 0.4,
 					{ease: easing, width: $('.expert.is-closed').css('min-width')},
@@ -283,28 +282,53 @@ $(function() {
 			hasCloseHandler = true;
 		});
 
-
+		// Experts mobile animation
 		var tl1 = new TimelineMax();
+		var hasCloseHandlerMob;
 		$('.expert-mob').on('click', function() {
+			if (!$(this).hasClass('is-active')) {
+				var top = $(this).offset().top;
+				$('html, body').animate({
+				  scrollTop: top},
+				  400);
+			}
 
 			if ($(this).hasClass('is-active')) return;
 
 			$('.expert-mob').removeClass('is-active');
 			$(this).addClass('is-active');
 
+
 			// Раскрытие
-			tl
-				.fromTo($(this).find('.expert-mob__inner, .expert-mob__img'), 0.4,
-					{ease: easing, opacity: 1},
-					{ease: easing, opacity: 0})
-				.to($(this).find('.expert-mob__inner, .expert-mob__img'), 0,
-					{display: 'none'})
-				.fromTo($(this).find('.expert-mob-opened'), 0,
-					{display: 'none'},
-					{display: 'block'})
-				.fromTo($(this).find('.expert-mob-opened'), 0.4,
-					{opacity: 0},
-					{opacity: 1})
+			tl.to($(this).find('.expert-mob__img, .expert-mob__inner'), 0.2, {ease: easing, opacity: 0, scale: 0})
+			$(this).find('.expert-mob__inner, .expert-mob__img').slideUp(400);
+			$(this).find('.expert-mob-opened').slideDown(400);
+
+			var self = $(this);
+		
+			var onMobCloseClick = function(e) {
+				e.stopPropagation();
+				var top = $(self).offset().top;
+				$('html, body').animate({
+				  scrollTop: top},
+				  400);
+
+				// Сворачивание
+				$(self).find('.expert-mob-opened').slideUp(400);
+				$(self).find('.expert-mob__img, .expert-mob__inner').slideDown(400);
+				setTimeout(function() {
+					tl.to($(self).find('.expert-mob__img, .expert-mob__inner'), 0.4, {ease: easing, opacity: 1, scale: 1})
+				}, 100)
+				
+
+				$(this).parent().parent().removeClass('is-active');
+
+				// Снимаем обработчик
+				$(this).find('.expert-mob-opened__close').off('click', onMobCloseClick);
+			};
+
+			// Вешаем обработчик
+			$(this).find('.expert-mob-opened__close').on('click', onMobCloseClick);
 		});
 
 		// Gradient

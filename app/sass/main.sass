@@ -60,6 +60,10 @@ body
 	height: 90px
 	margin: 45px auto 0 auto
 	display: block
+	position: relative
+	fill: #333
+
+// source
 @keyframes circleIn
 	0%
 		stroke-dashoffset: 350
@@ -76,9 +80,6 @@ body
 		stroke-dashoffset: 0
 		stroke: #00b859
 		transform: rotate(0)
-
-
-
 
 // Header
 .hamburger 
@@ -293,6 +294,7 @@ body
 		width: 225px
 		height: 80px
 		transform: translate(20px, -30px)
+		transform-box: fill-box
 		transition: 0.2s ease-out
 		&__arrow
 			position: absolute
@@ -302,10 +304,12 @@ body
 			transition: 0.2s ease-out
 			backface-visibility: hidden
 			transform-origin: 50% 50%
+			transform-box: fill-box
 			height: 45px
 			path
 				transition: 0.2s ease-in-out
 				transform-origin: 50% 50%
+				transform-box: fill-box
 				&:first-child
 					fill: #333
 				&:last-child
@@ -399,17 +403,18 @@ body
 				width: 140px
 				transition: 0.2s ease-out
 				transform-origin: 50% 50%
+				transform-box: fill-box
 				path
 					transition: 0.2s ease-in-out
 					&:first-child
 						fill: #333
 					&:last-child
-						// fill: #00B859
 						animation: circleIn 1s cubic-bezier(.645,.045,.355,1) forwards
 						transform-origin: 50% 50%
+						transform-box: fill-box
 						stroke: #00b859
-						stroke-dasharray: 350
-						stroke-dashoffset: 350
+						stroke-dasharray: 570
+						stroke-dashoffset: 570
 						fill: none
 			&:focus
 				color: #333
@@ -521,6 +526,7 @@ body
 		left: 30px
 
 
+
 // Experts
 #experts
 	overflow: hidden
@@ -566,6 +572,8 @@ body
 		.expert__img
 			opacity: 1
 			transform: translateX(0) !important
+		.expert__name, .expert__desc
+			transform: translateY(-30px)
 	&.bad
 		.expert-opened__img
 			background: url(../img/experts/kate.png) no-repeat
@@ -628,20 +636,21 @@ body
 		font-size: 14px
 		color: #333
 		margin-bottom: 10px
+		transition: transform 0.4s ease-in-out
 	&__desc
 		+osnova(reg)
 		font-size: 12px
 		color: #333
+		transition: transform 0.4s ease-in-out
 	&__img
 		position: absolute
 		left: -45px
 		width: 110%
-		transition: all 0.3s ease-in-out
+		transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out
 		transform: translateX(-100%)
 		opacity: 0
 		pointer-events: none
 		will-change: transform, opacity
-	
 	&__close
 		position: absolute
 		border: none
@@ -659,8 +668,8 @@ body
 		width: 48%
 		height: 56px
 		&.bad
-			background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,#0063b1 100%);
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a60063b1',GradientType=0 );
+			background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,#0063b1 100%)
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a60063b1',GradientType=0 )
 		&.cosm
 			background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,#f64747 100%)
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a6f64747',GradientType=0 )
@@ -729,6 +738,8 @@ body
 	width: 0
 	background: transparent
 
+#experts-mob
+	display: none
 .expert-mob
 	&.bad
 		background: #5996ca
@@ -789,7 +800,6 @@ body
 	padding: 40px 28px 50px 18px
 	position: relative
 	display: none
-	opacity: 0
 	&__close
 		padding: 0
 		border: none
@@ -895,6 +905,7 @@ body
 			transition: 0.2s ease-out
 			backface-visibility: hidden
 			transform-origin: 50% 50%
+			transform-box: fill-box
 			path
 				transition: 0.2s ease-in-out
 				&:first-child
@@ -902,6 +913,7 @@ body
 				&:last-child
 					animation: circleIn 1s cubic-bezier(.645,.045,.355,1) forwards
 					transform-origin: 50% 50%
+					transform-box: fill-box
 					stroke: #00b859
 					stroke-dasharray: 350
 					stroke-dashoffset: 350
