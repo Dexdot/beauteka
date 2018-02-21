@@ -18,6 +18,46 @@ $(function() {
 	      1000);
 		});
 
+	// Main
+		var setLogoVideoTop = function() {
+			var height = $('#main').height() / 2;
+			var coef = 0, mqFlag = 0;
+			mediaQueries(3000, function() {
+				mqFlag = 3000;
+				coef = 96;
+			});
+			mediaQueries(1689, function() {
+				mqFlag = 1689;
+				coef = 112;
+			});
+			mediaQueries(1399, function() {
+				mqFlag = 1399;
+				coef = 133;
+			});
+			mediaQueries(1199, function() {
+				mqFlag = 1199;
+				coef = 144;
+			});
+			mediaQueries(991, function() {
+				mqFlag = 991;
+				coef = 150;
+			});
+			mediaQueries(767, function() {
+				mqFlag = 767;
+				coef = 146;
+			});
+			mediaQueries(480, function() {
+				mqFlag = 480;
+				coef = 109;
+			});
+			height += coef;
+			$('.logo-video').css('top', height + 'px');
+		};
+		setLogoVideoTop();
+		$(window).on('resize', function() {
+			setLogoVideoTop();
+		});
+
 	// Test
 
 		var test = function() {
@@ -342,6 +382,42 @@ $(function() {
 			}
 		});
 
+	// Scroll Magic
+
+		var controller = new ScrollMagic.Controller({
+			globalSceneOptions: {
+				triggerHook: 'onLeave'
+			}
+		});
+
+		var mainSection = document.querySelector('section#main');
+		new ScrollMagic.Scene({
+			triggerElement: mainSection
+		})
+		.setPin(mainSection)
+		.addIndicators()
+		.addTo(controller);
+
+		// Воспроизведение видео после загрузки Scroll Magic
+		var videos = document.querySelectorAll('video');
+		videos.forEach(function(v) {
+			v.play();
+		});
+
+		// Остановка/Воспроизведение видео
+		$(window).on('scroll', function() {
+			var main = $('#main');
+			if (window.pageYOffset > main.height()) {
+				videos.forEach(function(v) {
+					v.stop();
+				});
+			} else {
+				videos.forEach(function(v) {
+					v.play();
+				});
+			}
+		});
+
 	function getMax(numArr) {
 		if (!numArr) return;
 		var max = numArr[0];
@@ -362,7 +438,6 @@ $(function() {
 		handleMatchMedia(mql);
 		mql.addListener(handleMatchMedia);
 	}
-
 
 	var version = detectIE();
 

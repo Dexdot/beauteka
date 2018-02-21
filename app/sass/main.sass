@@ -6,11 +6,15 @@
 html
 	background: linear-gradient(to right, #f4f7fd 0%,#fbf8f6 100%)
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f7fd', endColorstr='#fbf8f6',GradientType=1 )
+	overflow-x: hidden
 body 
 	opacity: 1
 	position: relative
 	overflow-x: hidden
-
+section, footer
+	z-index: 10
+	background: linear-gradient(to right, #f4f7fd 0%,#fbf8f6 100%)
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f7fd', endColorstr='#fbf8f6',GradientType=1 )
 /* 
 	1. Main
 	2. About
@@ -24,10 +28,10 @@ body
 
 // Common
 .hidden
-	display: none
-	opacity: 0
-	visibility: hidden
-	z-index: -1
+	display: none !important
+	opacity: 0 !important
+	visibility: hidden !important
+	z-index: -1 !important
 .center
 	position: fixed
 	top: 50%
@@ -88,7 +92,7 @@ body
 	top: 35px	
 	right: 15px
 	padding: 0
-	z-index: 10
+	z-index: 12
 	outline: none
 	background-color: transparent
 	border-radius: 50%
@@ -99,7 +103,7 @@ body
 .header
 	padding-top: 35px
 	position: absolute
-	z-index: 1
+	z-index: 11
 	top: 0
 	left: 0
 	right: 0
@@ -130,7 +134,7 @@ body
 	height: 100vh
 	z-index: -1
 	filter: blur(3px)
-	transform: scale(1.01)
+	transform: scale(1.02)
 	&::before
 		content: ''
 		position: absolute
@@ -152,13 +156,21 @@ body
 #main
 	min-height: 100vh
 	width: 100%
-	overflow: hidden
 	position: relative
+	background: none
+	z-index: -1
 .main
 	position: absolute
 	top: calc(50% - 40px)
 	left: 16%
 	transform: translateY(-50%)
+	&-wrap
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		overflow: hidden
 	&__header
 		color: #fff
 		+phil
@@ -176,21 +188,27 @@ body
 	transform: scale(0.003)
 .logo-video
 	position: absolute
-	transform: translate(-50%, -50%)
-	top: calc(50% + 133px)
 	left: calc(50% + 133px)
+	transform: translate(-50%, -50%) scale(1)
 	width: 700px
 	height: 700px
-	z-index: -1
+	z-index: 11
+	animation: tra 2s ease-in-out 0s infinite alternate
 	& > div
 		clip-path: url(#mask)
 
-
+@keyframes tra
+	0%
+		transform: translate(-31%, -31%) scale(2)
+	100%
+		transform: translate(-50%, -50%) scale(1)
 // About
 #about
 	width: 100%
 	min-height: 600px
 	position: relative
+	background: linear-gradient(to right, #f4f7fd 0%,#fbf8f6 100%)
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f7fd', endColorstr='#fbf8f6',GradientType=1 )
 .about
 	position: absolute
 	top: 50%
@@ -847,6 +865,7 @@ body
 		p
 			margin-bottom: 15px
 
+
 // Products
 #products
 	padding-top: 150px
@@ -949,13 +968,17 @@ body
 			width: 114px
 			z-index: 1
 		&-5
-			top: 79% // 600px
-			left: 4% // 50px
+			// top: 79% // 600px
+			top: 75% // 600px
+			// left: 4% // 50px
+			left: 8% // 50px
 			width: 35px
 		&-6
-			top: 85% // 650px
+			// top: 85% // 650px
+			top: 75% // 650px
 			left: 26% // 350px
-			width: 68px
+			// width: 68px
+			width: 54px
 			z-index: 1
 		&-7
 			top: 65% // 500px
@@ -963,8 +986,8 @@ body
 			width: 22px
 			transform: scale(-1, 1)
 		&-8
-			top: 79% // 600px
-			right: 42% // 560px
+			top: 74% // 600px
+			right: 40% // 560px
 			width: 40px
 			z-index: 1
 		&-9
@@ -972,8 +995,10 @@ body
 			right: 15% // 200px
 			width: 33px
 		&-10
-			top: 79% // 600px
-			right: 11% // 140px
+			// top: 79% // 600px
+			top: 70% // 600px
+			// right: 11% // 140px
+			right: 5% // 140px
 			width: 114px
 			z-index: 1
 		&-11

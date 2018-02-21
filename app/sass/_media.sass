@@ -9,6 +9,12 @@
 	.arrow-down
 		height: 110px
 		margin: 54px auto 0 auto
+	
+	@keyframes tra
+		0%
+			transform: translate(-34%, -34%) scale(2)
+		100%
+			transform: translate(-50%, -50%) scale(1)
 
 	// Main
 	.nav
@@ -23,7 +29,6 @@
 			margin-top: 40px
 			font-size: 14px
 	.logo-video
-		top: calc(50% + 112px)
 		left: calc(50% + 112px)
 	#mask
 		transform: scale(0.0033)
@@ -341,6 +346,13 @@
 	.arrow-down
 		height: 130px
 		margin: 65px auto 0 auto
+	
+	
+	@keyframes tra
+		0%
+			transform: translate(-38%, -38%) scale(2)
+		100%
+			transform: translate(-50%, -50%) scale(1)
 
 	// Main
 	.header__logo svg
@@ -358,7 +370,6 @@
 			margin-top: 60px
 	.logo
 		&-video
-			top: calc(50% + 96px)
 			left: calc(50% + 96px)
 			width: 800px
 			height: 800px
@@ -691,6 +702,12 @@
 
 
 @media only screen and (max-width : 1199px)
+	
+	@keyframes tra
+		0%
+			transform: translate(-28%, -28%) scale(2)
+		100%
+			transform: translate(-50%, -50%) scale(1)
 
 	// Main
 	.nav__link
@@ -703,7 +720,6 @@
 		&__desc
 			font-size: 11px
 	.logo-video
-		top: calc(50% + 144px)
 		left: calc(50% + 144px)
 		width: 650px
 		height: 650px
@@ -831,7 +847,13 @@
 
 
 
-@media only screen and (max-width : 991px) 
+@media only screen and (max-width : 991px)
+
+	@keyframes tra
+		0%
+			transform: translate(-26%, -26%) scale(2)
+		100%
+			transform: translate(-50%, -50%) scale(1)
 
 	// Main
 	.main
@@ -842,7 +864,6 @@
 		&__desc
 			margin-top: 20px
 	.logo-video
-		top: calc(50% + 150px)
 		left: calc(50% + 150px)
 		width: 620px
 		height: 620px
@@ -1039,7 +1060,6 @@
 	.section-header
 		font-size: 38px
 
-
 	// Main
 	.hamburger 
 		display: block
@@ -1072,7 +1092,6 @@
 		left: 9%
 		&__desc
 	.logo-video
-		top: calc(50% + 146px)
 		left: calc(50% + 146px)
 		width: 600px
 		height: 600px
@@ -1194,7 +1213,9 @@
 	.products
 		&-desc
 			max-width: 75%
-
+	.product-petal
+		&-6, &-12
+			display: none
 
 	// Subscribe
 	#subscribe
@@ -1241,6 +1262,7 @@
 	.social__link
 		+osnova(md)
 		color: #333
+	
 	// Footer
 	.footer__link
 		margin-right: 20px
@@ -1259,7 +1281,6 @@
 			width: 32px
 			height: 32px
 	.logo-video
-		top: calc(50% + 109px)
 		left: calc(50% + 109px)
 		width: 450px
 		height: 450px
