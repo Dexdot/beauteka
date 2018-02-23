@@ -35,6 +35,7 @@ gulp.task('js', ['common-js'], function() {
 		
 		'app/libs/vide/vide.js',
 		'app/libs/gsap/gsap.js',
+		'app/libs/split/split.js',
 
 		'app/libs/scrollmagic/scrollmagic.js',
 		'app/libs/scrollmagic/animation.gsap.js',
@@ -53,7 +54,8 @@ gulp.task('browser-sync', function() {
 	browserSync({
 		server: {
 			// host: "192.168.1.103",
-			host: "192.168.0.122",
+			// host: "192.168.0.125",
+			host: "192.168.1.108",
 			// host: "172.20.10.2",
 			baseDir: 'app'
 		},

@@ -10,7 +10,7 @@
 		height: 110px
 		margin: 54px auto 0 auto
 	
-	@keyframes tra
+	@keyframes lgv
 		0%
 			transform: translate(-34%, -34%) scale(2)
 		100%
@@ -22,7 +22,6 @@
 			font-size: 12px
 			margin-left: 50px
 	.main
-		left: 16%
 		&__header
 			font-size: 80px
 		&__desc
@@ -30,6 +29,7 @@
 			font-size: 14px
 	.logo-video
 		left: calc(50% + 112px)
+		transform: translate(-34%, -34%) scale(2)
 	#mask
 		transform: scale(0.0033)
 
@@ -348,7 +348,7 @@
 		margin: 65px auto 0 auto
 	
 	
-	@keyframes tra
+	@keyframes lgv
 		0%
 			transform: translate(-38%, -38%) scale(2)
 		100%
@@ -362,7 +362,7 @@
 			font-size: 12px
 			margin-left: 80px
 	.main
-		left: 20%
+		left: 20% !important
 		&__header
 			font-size: 94px
 		&__desc
@@ -373,6 +373,7 @@
 			left: calc(50% + 96px)
 			width: 800px
 			height: 800px
+			transform: translate(-38%, -38%) scale(2)
 	#mask
 		transform: scale(0.0037)
 
@@ -701,7 +702,7 @@
 
 @media only screen and (max-width : 1199px)
 	
-	@keyframes tra
+	@keyframes lgv
 		0%
 			transform: translate(-28%, -28%) scale(2)
 		100%
@@ -712,13 +713,13 @@
 		font-size: 11px
 		margin-left: 30px
 	.main
-		left: 16%
 		&__header
 			font-size: 56px
 		&__desc
 			font-size: 11px
 	.logo-video
 		left: calc(50% + 144px)
+		transform: translate(-28%, -28%) scale(2)
 		width: 650px
 		height: 650px
 	#mask
@@ -847,7 +848,7 @@
 
 @media only screen and (max-width : 991px)
 
-	@keyframes tra
+	@keyframes lgv
 		0%
 			transform: translate(-26%, -26%) scale(2)
 		100%
@@ -856,7 +857,7 @@
 	// Main
 	.main
 		top: calc(50% - 20px)
-		left: 12%
+		left: 12% !important
 		&__header
 			font-size: 48px
 		&__desc
@@ -865,6 +866,7 @@
 		left: calc(50% + 150px)
 		width: 620px
 		height: 620px
+		transform: translate(-26%, -26%) scale(2)
 	#mask
 		transform: scale(0.0025)
 	
@@ -872,9 +874,9 @@
 	// About
 	.about
 		padding-left: 0
-		max-width: 45%
+		max-width: 50%
 		&__desc
-			max-width: 100%
+			max-width: 380px
 
 
 	// Test
@@ -1091,7 +1093,7 @@
 	.blur
 		transform: scale(1.03)
 	.main
-		left: 9%
+		left: 9% !important
 		&__desc
 	.logo-video
 		left: calc(50% + 146px)
@@ -1100,8 +1102,6 @@
 
 
 	// About
-	#about
-		min-height: 800px
 	.about
 		max-width: calc(100% - 30px)
 		top: 65%
@@ -1287,7 +1287,7 @@
 		width: 450px
 		height: 450px
 	.main
-		left: 15px
+		left: 15px !important
 		top: calc(50% + 40px)
 		&__header
 			font-size: 40px
@@ -1298,8 +1298,6 @@
 		transform: scale(1.17)
 
 	// About
-	#about
-		min-height: 750px
 	.about
 		&__desc
 			font-size: 13px
@@ -1466,4 +1464,6 @@
 
 
 
-// @media only screen and (max-width : 330px) 
+@media only screen and (max-width : 330px)
+	.about
+		transform: translateY(-40%)

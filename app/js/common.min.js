@@ -19,8 +19,6 @@ $(function() {
 		});
 
 	// Main
-		$('.logo-video').addClass('anim');
-
 		var setTops = function() {
 			var height = $('#main').height();
 			var logoVideoCoef = 0, mqFlag = 0;
@@ -61,6 +59,15 @@ $(function() {
 		setTops();
 		$(window).on('resize', function() {
 			setTops();
+		});
+
+	// Split
+
+		$('.main__header, .section-header').addClass('js-splitme');
+
+		var els = document.querySelectorAll('.js-splitme');
+		[].forEach.call(els, function(el) {
+			el.outerHTML = Splitter(el.outerHTML, '<span class="letter">$</span>');
 		});
 
 	// Test
@@ -402,7 +409,6 @@ $(function() {
 				triggerElement: mainSection
 			})
 			.setPin(mainSection)
-			.addIndicators({name: 'Main section'})
 			.addTo(controller);
 
 		// Main text scene
@@ -417,12 +423,47 @@ $(function() {
 			})
 			.setTween(mainTextTween)
 			.setPin(mainText)
-			.addIndicators()
 			.addTo(controller);
 
 		// Logo video scene
-			var logoVideoTween = new TimelineMax()
-			.to('.logo-video', 2, {ease: easing, x: '-5%'}, 'l')
+			var logoVideoTween, vpWidth = 0;
+			mediaQueries(3000, function() {
+				vpWidth = 3000;
+			});
+			mediaQueries(900, function() {
+				vpWidth = 900;
+			});
+			mediaQueries(767, function() {
+				vpWidth = 767;
+			});
+			mediaQueries(480, function() {
+				vpWidth = 480;
+			});
+
+			var removeAnim = function() {
+				$('.logo-video').css('animation', 'none');
+			}
+
+			switch (vpWidth) {
+
+				case 900:
+				  logoVideoTween = new TimelineMax()
+					.to('.logo-video', 2, {ease: easing, x: '-20%', onStart: removeAnim}, 'l');
+					break;
+				case 767:
+				  logoVideoTween = new TimelineMax()
+					.to('.logo-video', 2, {ease: easing, x: '-50%', y: '-85%', onStart: removeAnim}, 'l');
+					break;
+				case 480:
+				  logoVideoTween = new TimelineMax()
+					.to('.logo-video', 2, {ease: easing, x: '-50%', y: '-100%', onStart: removeAnim}, 'l');
+					break;
+				default:
+				  logoVideoTween = new TimelineMax()
+					.to('.logo-video', 3, {ease: easing, x: '-5%', onStart: removeAnim}, 'l');
+					break;
+			}
+
 
 			new ScrollMagic.Scene({
 				triggerElement: mainSection,
@@ -430,28 +471,124 @@ $(function() {
 			})
 			.setTween(logoVideoTween)
 			.setPin('.logo-video')
-			.addIndicators({name: 'logo-video'})
 			.addTo(controller);
 
+		// Section headers animation
+			var headers = Array.from(document.querySelectorAll('.section-header'));
+			headers.forEach(function(header) {
+				var parentSection = $(header).closest('section');
+				new ScrollMagic.Scene({
+					offset: parentSection.offset().top - 450,
+					triggerHook: 'onEnter'
+				})
+				.on('enter', function() {
+					new TimelineMax().staggerTo(parentSection.find('.letter'), 0.5, {x: '0%', opacity: 1}, 0.025);
+				})
+				.addTo(controller)
+			});
+
+		// Section descriptions animation
+			var descriptions = Array.from(document.querySelectorAll('.section-description'));
+			descriptions.forEach(function(desc) {
+				var parentSection = $(desc).closest('section');
+				new ScrollMagic.Scene({
+					offset: parentSection.offset().top - 450,
+					triggerHook: 'onEnter'
+				})
+				.on('enter', function() {
+					new TimelineMax().to(parentSection.find('.section-description'), 0.9, {ease: Power1.easeInOut, y: '0%', opacity: 1}, '+=0.3');
+				})
+				.addTo(controller)
+			});
+
+		// Leafs
+
+			var leafLeftTween = new TimelineMax()
+			.to('.leaf-left', 2, {ease: easing, x: '0%'})
+
+			new ScrollMagic.Scene({
+				triggerElement: '#test',
+				offset: '-150',
+				duration: '50%'
+			})
+			.setTween(leafLeftTween)
+			.addTo(controller);
+
+			var leafRightTween = new TimelineMax()
+			.to('.leaf-right', 2, {ease: easing, x: '0%'})
+
+			new ScrollMagic.Scene({
+				triggerElement: '#test',
+				offset: '-150',
+				duration: '50%'
+			})
+			.setTween(leafRightTween)
+			.addTo(controller);
+
+		// Petals
+
+			var petalsTween = new TimelineMax().to('.petals .petal', 0.4, {ease: easing, opacity: 1, x: '0%', y: '0%'});
+
+			new ScrollMagic.Scene({
+				triggerElement: '.about__desc',
+				duration: '70%'
+			})
+			.setTween(petalsTween)
+			.addTo(controller);
+
+		// Subscribe leafs
+
+			var subLeftTween = new TimelineMax().to('.subscribe__leaf-left', 1, {ease: easing, rotation: -10});
+
+			new ScrollMagic.Scene({
+				triggerElement: '#subscribe',
+				offset: -300,
+				duration: '65%'
+			})
+			.setTween(subLeftTween)
+			.addTo(controller)
+
+			var subRightTween = new TimelineMax().to('.subscribe__leaf-right', 1, {ease: easing, rotation: 10});
+
+			new ScrollMagic.Scene({
+				triggerElement: '#subscribe',
+				offset: -300,
+				duration: '65%'
+			})
+			.setTween(subRightTween)
+			.addTo(controller)
+
+		// Contacts map
+
+			new ScrollMagic.Scene({
+				offset: $('#contacts').offset().top - 300,
+				triggerHook: 'onEnter'
+			})
+			.on('enter', function() {
+				new TimelineMax().to('.contacts-wrap', 1.2, {ease: easing, scale: 1});
+			})
+			.addIndicators({name: 'map'})
+			.addTo(controller)
+
 		// Воспроизведение видео после загрузки Scroll Magic
-		var videos = document.querySelectorAll('video');
-		videos.forEach(function(v) {
-			v.play();
-		});
+			var videos = document.querySelectorAll('video');
+			videos.forEach(function(v) {
+				v.play();
+			});
 
 		// Остановка/Воспроизведение видео
-		$(window).on('scroll', function() {
-			var main = $('#main');
-			if (window.pageYOffset > main.height()) {
-				videos.forEach(function(v) {
-					v.pause();
-				});
-			} else {
-				videos.forEach(function(v) {
-					v.play();
-				});
-			}
-		});
+			$(window).on('scroll', function() {
+				var main = $('#main');
+				if (window.pageYOffset > main.height()) {
+					videos.forEach(function(v) {
+						v.pause();
+					});
+				} else {
+					videos.forEach(function(v) {
+						v.play();
+					});
+				}
+			});
 
 	function getMax(numArr) {
 		if (!numArr) return;
@@ -474,235 +611,236 @@ $(function() {
 		mql.addListener(handleMatchMedia);
 	}
 
-	var version = detectIE();
+	// IE
+		var version = detectIE();
 
-	if (version === false) {
-	  $('.map-button').removeClass('ie');
-	  $('.product__info').removeClass('ie');
-	} else if (version >= 12) {
-	} else {
-	  $('.map-button').addClass('ie');
-	  $('.product__info').addClass('ie');
-	}
+		if (version === false) {
+		  $('.map-button').removeClass('ie');
+		  $('.product__info').removeClass('ie');
+		} else if (version >= 12) {
+		} else {
+		  $('.map-button').addClass('ie');
+		  $('.product__info').addClass('ie');
+		}
 
-	function detectIE() {
-	  var ua = window.navigator.userAgent;
+		function detectIE() {
+		  var ua = window.navigator.userAgent;
 
-	  var msie = ua.indexOf('MSIE ');
-	  if (msie > 0) {
-	    // IE 10 or older => return version number
-	    return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-	  }
+		  var msie = ua.indexOf('MSIE ');
+		  if (msie > 0) {
+		    // IE 10 or older => return version number
+		    return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+		  }
 
-	  var trident = ua.indexOf('Trident/');
-	  if (trident > 0) {
-	    // IE 11 => return version number
-	    var rv = ua.indexOf('rv:');
-	    return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
-	  }
+		  var trident = ua.indexOf('Trident/');
+		  if (trident > 0) {
+		    // IE 11 => return version number
+		    var rv = ua.indexOf('rv:');
+		    return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+		  }
 
-	  var edge = ua.indexOf('Edge/');
-	  if (edge > 0) {
-	    // Edge (IE 12+) => return version number
-	    return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
-	  }
+		  var edge = ua.indexOf('Edge/');
+		  if (edge > 0) {
+		    // Edge (IE 12+) => return version number
+		    return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+		  }
 
-	  // other browser
-	  return false;
-	}
+		  // other browser
+		  return false;
+		}
 
 	// Mobile map (< 767px)
-	var initMobMap = function() {
-		var moscowCenter = {lat: 55.751132, lng: 37.624252};
-		var mapStyles = [
-		  {
-		    "elementType": "geometry",
-		    "stylers": [
-		      {
-		        "color": "#f5f5f5"
-		      }
-		    ]
-		  },
-		  {
-		    "elementType": "labels.icon",
-		    "stylers": [
-		      {
-		        "visibility": "off"
-		      }
-		    ]
-		  },
-		  {
-		    "elementType": "labels.text.fill",
-		    "stylers": [
-		      {
-		        "color": "#616161"
-		      }
-		    ]
-		  },
-		  {
-		    "elementType": "labels.text.stroke",
-		    "stylers": [
-		      {
-		        "color": "#f5f5f5"
-		      }
-		    ]
-		  },
-		  {
-		    "featureType": "administrative.land_parcel",
-		    "elementType": "labels.text.fill",
-		    "stylers": [
-		      {
-		        "color": "#bdbdbd"
-		      }
-		    ]
-		  },
-		  {
-		    "featureType": "poi",
-		    "elementType": "geometry",
-		    "stylers": [
-		      {
-		        "color": "#eeeeee"
-		      }
-		    ]
-		  },
-		  {
-		    "featureType": "poi",
-		    "elementType": "labels.text.fill",
-		    "stylers": [
-		      {
-		        "color": "#757575"
-		      }
-		    ]
-		  },
-		  {
-		    "featureType": "poi.park",
-		    "elementType": "geometry",
-		    "stylers": [
-		      {
-		        "color": "#e5e5e5"
-		      }
-		    ]
-		  },
-		  {
-		    "featureType": "poi.park",
-		    "elementType": "labels.text.fill",
-		    "stylers": [
-		      {
-		        "color": "#9e9e9e"
-		      }
-		    ]
-		  },
-		  {
-		    "featureType": "road",
-		    "elementType": "geometry",
-		    "stylers": [
-		      {
-		        "color": "#ffffff"
-		      }
-		    ]
-		  },
-		  {
-		    "featureType": "road.arterial",
-		    "elementType": "labels.text.fill",
-		    "stylers": [
-		      {
-		        "color": "#757575"
-		      }
-		    ]
-		  },
-		  {
-		    "featureType": "road.highway",
-		    "elementType": "geometry",
-		    "stylers": [
-		      {
-		        "color": "#dadada"
-		      }
-		    ]
-		  },
-		  {
-		    "featureType": "road.highway",
-		    "elementType": "labels.text.fill",
-		    "stylers": [
-		      {
-		        "color": "#616161"
-		      }
-		    ]
-		  },
-		  {
-		    "featureType": "road.local",
-		    "elementType": "labels.text.fill",
-		    "stylers": [
-		      {
-		        "color": "#9e9e9e"
-		      }
-		    ]
-		  },
-		  {
-		    "featureType": "transit.line",
-		    "elementType": "geometry",
-		    "stylers": [
-		      {
-		        "color": "#e5e5e5"
-		      }
-		    ]
-		  },
-		  {
-		    "featureType": "transit.station",
-		    "elementType": "geometry",
-		    "stylers": [
-		      {
-		        "color": "#eeeeee"
-		      }
-		    ]
-		  },
-		  {
-		    "featureType": "water",
-		    "elementType": "geometry",
-		    "stylers": [
-		      {
-		        "color": "#c9c9c9"
-		      }
-		    ]
-		  },
-		  {
-		    "featureType": "water",
-		    "elementType": "labels.text.fill",
-		    "stylers": [
-		      {
-		        "color": "#9e9e9e"
-		      }
-		    ]
-		  }
-		];
-		
-		var map = new google.maps.Map(document.querySelector('.map-mob'), {
-			center: moscowCenter,
-			disableDefaultUI: true,
-			zoom: 10
-		});
-		map.setOptions({styles: mapStyles});
-
-		var icon = {
-			url: '../img/svg/logo.svg',
-	    scaledSize: new google.maps.Size(21, 21)
-		};
-		var locations = [
-			{lat: 55.623292, lng: 37.603828}, // Днепропетровская ул., 2
-			{lat: 55.753743, lng: 37.882196}, // Юбилейный пр., 57
-			{lat: 55.753868, lng: 37.662233}, // 2-й Сыромятнический пер., 1 
-			{lat: 55.761528, lng: 37.585943}, // Ул. Садовая-Кудринская, дом 7
-			{lat: 55.612327, lng: 37.732923}, // Ореховый б-р, 22А
-			{lat: 55.790073, lng: 37.678429} // Сокольническая площадь, 4а
-		];
-		var markers = locations.map(function(location, i) {
-			return new google.maps.Marker({
-				position: locations[i],
-				map: map,
-				icon: icon
+		var initMobMap = function() {
+			var moscowCenter = {lat: 55.751132, lng: 37.624252};
+			var mapStyles = [
+			  {
+			    "elementType": "geometry",
+			    "stylers": [
+			      {
+			        "color": "#f5f5f5"
+			      }
+			    ]
+			  },
+			  {
+			    "elementType": "labels.icon",
+			    "stylers": [
+			      {
+			        "visibility": "off"
+			      }
+			    ]
+			  },
+			  {
+			    "elementType": "labels.text.fill",
+			    "stylers": [
+			      {
+			        "color": "#616161"
+			      }
+			    ]
+			  },
+			  {
+			    "elementType": "labels.text.stroke",
+			    "stylers": [
+			      {
+			        "color": "#f5f5f5"
+			      }
+			    ]
+			  },
+			  {
+			    "featureType": "administrative.land_parcel",
+			    "elementType": "labels.text.fill",
+			    "stylers": [
+			      {
+			        "color": "#bdbdbd"
+			      }
+			    ]
+			  },
+			  {
+			    "featureType": "poi",
+			    "elementType": "geometry",
+			    "stylers": [
+			      {
+			        "color": "#eeeeee"
+			      }
+			    ]
+			  },
+			  {
+			    "featureType": "poi",
+			    "elementType": "labels.text.fill",
+			    "stylers": [
+			      {
+			        "color": "#757575"
+			      }
+			    ]
+			  },
+			  {
+			    "featureType": "poi.park",
+			    "elementType": "geometry",
+			    "stylers": [
+			      {
+			        "color": "#e5e5e5"
+			      }
+			    ]
+			  },
+			  {
+			    "featureType": "poi.park",
+			    "elementType": "labels.text.fill",
+			    "stylers": [
+			      {
+			        "color": "#9e9e9e"
+			      }
+			    ]
+			  },
+			  {
+			    "featureType": "road",
+			    "elementType": "geometry",
+			    "stylers": [
+			      {
+			        "color": "#ffffff"
+			      }
+			    ]
+			  },
+			  {
+			    "featureType": "road.arterial",
+			    "elementType": "labels.text.fill",
+			    "stylers": [
+			      {
+			        "color": "#757575"
+			      }
+			    ]
+			  },
+			  {
+			    "featureType": "road.highway",
+			    "elementType": "geometry",
+			    "stylers": [
+			      {
+			        "color": "#dadada"
+			      }
+			    ]
+			  },
+			  {
+			    "featureType": "road.highway",
+			    "elementType": "labels.text.fill",
+			    "stylers": [
+			      {
+			        "color": "#616161"
+			      }
+			    ]
+			  },
+			  {
+			    "featureType": "road.local",
+			    "elementType": "labels.text.fill",
+			    "stylers": [
+			      {
+			        "color": "#9e9e9e"
+			      }
+			    ]
+			  },
+			  {
+			    "featureType": "transit.line",
+			    "elementType": "geometry",
+			    "stylers": [
+			      {
+			        "color": "#e5e5e5"
+			      }
+			    ]
+			  },
+			  {
+			    "featureType": "transit.station",
+			    "elementType": "geometry",
+			    "stylers": [
+			      {
+			        "color": "#eeeeee"
+			      }
+			    ]
+			  },
+			  {
+			    "featureType": "water",
+			    "elementType": "geometry",
+			    "stylers": [
+			      {
+			        "color": "#c9c9c9"
+			      }
+			    ]
+			  },
+			  {
+			    "featureType": "water",
+			    "elementType": "labels.text.fill",
+			    "stylers": [
+			      {
+			        "color": "#9e9e9e"
+			      }
+			    ]
+			  }
+			];
+			
+			var map = new google.maps.Map(document.querySelector('.map-mob'), {
+				center: moscowCenter,
+				disableDefaultUI: true,
+				zoom: 10
 			});
-		});
-	}
-	initMobMap();
+			map.setOptions({styles: mapStyles});
+
+			var icon = {
+				url: '../img/svg/logo.svg',
+		    scaledSize: new google.maps.Size(21, 21)
+			};
+			var locations = [
+				{lat: 55.623292, lng: 37.603828}, // Днепропетровская ул., 2
+				{lat: 55.753743, lng: 37.882196}, // Юбилейный пр., 57
+				{lat: 55.753868, lng: 37.662233}, // 2-й Сыромятнический пер., 1 
+				{lat: 55.761528, lng: 37.585943}, // Ул. Садовая-Кудринская, дом 7
+				{lat: 55.612327, lng: 37.732923}, // Ореховый б-р, 22А
+				{lat: 55.790073, lng: 37.678429} // Сокольническая площадь, 4а
+			];
+			var markers = locations.map(function(location, i) {
+				return new google.maps.Marker({
+					position: locations[i],
+					map: map,
+					icon: icon
+				});
+			});
+		}
+		initMobMap();
 
 });
 

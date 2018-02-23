@@ -32,12 +32,15 @@
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
 
-	<style> body{opacity:0}html{background-color:#fff}
+	<style> body{opacity:0}html{background-color:#fff}.preloader{position: fixed;top:0;left:0;width:100%;height:100%;background:#222;z-index:99999;color:#fff;display:flex;align-items:center;justify-content:center;font-size:48px;}
 		/* Main screen styles */
+	}
 	</style>
 
 </head>
 <body>
+
+	<div class="preloader">Preloader</div>
 
 	<!-- Begin SVG Sprite -->
 		<div class="SVG Sprite" style="display:none">
@@ -87,7 +90,7 @@
 		<div class="main-wrap">
 			<div class="blur" data-vide-bg="img/main/video"></div>
 		</div>
-	</section>	
+	</section>
 
 	<div class="main">
 		<h1 class="main__header js-splitme">Сила природы<br>от Бьютека</h1>
@@ -103,9 +106,9 @@
 		<div class="container">
 			<div class="about">
 				<h2 class="section-header">Настоящие эко-товары</h2>
-				<p class="about__desc">В России рынок эко-товаров молодой и неоформленный. Юридического определения «натуральных» средств просто нет, и единственное, что многие бренды взяли от природы — это умение притворяться.</p>
+				<p class="about__desc section-description">В России рынок эко-товаров молодой и неоформленный. Юридического определения «натуральных» средств просто нет, и единственное, что многие бренды взяли от природы — это умение притворяться.</p>
 				<br>
-				<p class="about__desc">Многие хотели бы покупать натуральные товары, чтобы заботиться о себе и планете, но найти настоящие эко-продукты не так-то просто. Бьютека поможет разобраться в том, что такое натуральные продукты, и как их покупать.</p>
+				<p class="about__desc section-description">Многие хотели бы покупать натуральные товары, чтобы заботиться о себе и планете, но найти настоящие эко-продукты не так-то просто. Бьютека поможет разобраться в том, что такое натуральные продукты, и как их покупать.</p>
 			</div>
 		</div>
 	</section>
@@ -114,7 +117,7 @@
 		<div class="container">
 			<div class="test-head">
 				<h2 class="section-header text-center">Пройди тест</h2>
-				<p class="test-desc text-center">Узнай, сможешь ли ты вычислить притворщиков<br> и купить настоящие эко-товары</p>
+				<p class="test-desc section-description text-center">Узнай, сможешь ли ты вычислить притворщиков<br> и купить настоящие эко-товары</p>
 				<svg class="arrow-down" id="arrow-down-id">
 				  <use xlink:href='#arrow-down'/>
 				</svg>
@@ -135,9 +138,9 @@
 					<span class="test__number"><span>02</span> / 05</span>
 					<h3 class="test__question">Какие средства бывают натуральными?</h3>
 					<div class="test__btns">
-						<button class="test__btn">Уходовая косметика. Всякие полезные кремчики и шампуни.</button>
+						<button class="test__btn is-false">Уходовая косметика. Всякие полезные кремчики и шампуни.</button>
 						<button class="test__btn">Уходовая и декоративная косметика.</button>
-						<button class="test__btn">Уходовая и декоративная косметика<br> и бытовые средства.</button>
+						<button class="test__btn is-true">Уходовая и декоративная косметика<br> и бытовые средства.</button>
 					</div>
 					<p class="test__answer">
 						Натуральными и безвредными для природы могут быть любая косметика и все средства. Даже средство для устранения засоров в раковине. Разных марок тоже много, этот рынок очень большой.
@@ -209,18 +212,18 @@
 			</div>
 		</div>
 		<div class="petals">
-			<img class="petal petal-1" src="img/petals/1.png" alt="Лепесток">
-			<img class="petal petal-2" src="img/petals/2.png" alt="Лепесток">
-			<img class="petal petal-3" src="img/petals/3.png" alt="Лепесток">
-			<img class="petal petal-4" src="img/petals/4.png" alt="Лепесток">
-			<img class="petal petal-5" src="img/petals/5.png" alt="Лепесток">
-			<img class="petal petal-6" src="img/petals/6.png" alt="Лепесток">
-			<img class="petal petal-7" src="img/petals/7.png" alt="Лепесток">
-			<img class="petal petal-8" src="img/petals/8.png" alt="Лепесток">
-			<img class="petal petal-9" src="img/petals/9.png" alt="Лепесток">
-			<img class="petal petal-10" src="img/petals/10.png" alt="Лепесток">
-			<img class="petal petal-11" src="img/petals/11.png" alt="Лепесток">
-			<img class="petal petal-12" src="img/petals/1.png" alt="Лепесток">
+			<img class="petal petal-1 petal-top-left" src="img/petals/1.png" alt="Лепесток">
+			<img class="petal petal-2 petal-top-left" src="img/petals/2.png" alt="Лепесток">
+			<img class="petal petal-3 petal-bottom-left" src="img/petals/3.png" alt="Лепесток">
+			<img class="petal petal-4 petal-bottom-left" src="img/petals/4.png" alt="Лепесток">
+			<img class="petal petal-5 petal-bottom-left" src="img/petals/5.png" alt="Лепесток">
+			<img class="petal petal-6 petal-bottom-right" src="img/petals/6.png" alt="Лепесток">
+			<img class="petal petal-7 petal-bottom-right" src="img/petals/7.png" alt="Лепесток">
+			<img class="petal petal-8 petal-bottom-right" src="img/petals/8.png" alt="Лепесток">
+			<img class="petal petal-9 petal-top-right" src="img/petals/9.png" alt="Лепесток">
+			<img class="petal petal-10 petal-top-right" src="img/petals/10.png" alt="Лепесток">
+			<img class="petal petal-11 petal-top-right" src="img/petals/11.png" alt="Лепесток">
+			<img class="petal petal-12 petal-bottom-left" src="img/petals/1.png" alt="Лепесток">
 		</div>
 	</section>
 
@@ -547,7 +550,7 @@
 	<section id="products">
 		<div class="container">
 			<h2 class="section-header text-center">Проверенные средства</h2>
-			<p class="products-desc text-center">Все товары на сайте и в магазинах Бьютека одобрены экспертами и безопасны для человека и природы.</p>
+			<p class="products-desc section-description text-center">Все товары на сайте и в магазинах Бьютека одобрены экспертами и безопасны для человека и природы.</p>
 
 			<div class="products">
 				<div class="product">
@@ -628,7 +631,7 @@
 	<section id="subscribe">
 		<div class="container">
 			<h2 class="subscribe-header section-header text-center">Больше экспертных советов</h2>
-			<p class="subscribe-desc text-center">
+			<p class="subscribe-desc section-description text-center">
 				Как жить, чтобы не вредить себе и другим. Серия писем об эколологичной 
 				жизни и скидка 15% на товары Бьютека.
 			</p>
@@ -700,6 +703,51 @@
 			</div>
 		</div>
 	</footer>
+
+	<script>
+		var noscroll = function() {
+			document.querySelector('body').classList.add('noscroll');
+		}
+		document.addEventListener('DOMContentLoaded', noscroll);
+
+		window.onload = function() {
+			var el = document.querySelector('.preloader');
+			el.style.opacity = 1;
+
+			(function fade() {
+				if ((el.style.opacity -= 0.03) < 0) {
+					el.style.display = "none";
+					document.querySelector('.logo-video').classList.add('anim');
+
+
+					var controller = new ScrollMagic.Controller({
+						globalSceneOptions: {
+							triggerHook: 'onLeave'
+						}
+					});
+					new ScrollMagic.Scene({
+						offset: 0,
+						triggerHook: 'onEnter'
+					})
+					.on('enter', function() {
+						new TimelineMax()
+						.staggerFromTo('.main__header .letter', 0.5, {ease: Power1.easeInOut, x: '100%', opacity: 0}, {ease: Power1.easeInOut, x: '0%', opacity: 1}, 0.025, '+=0.2')
+						.fromTo('.main__desc', 0.6, {ease: Power1.easeInOut, y: '100%', opacity: 0}, {ease: Power1.easeInOut, y: '0%', opacity: 1}, '-=0.8');
+					})
+					.addTo(controller);
+
+
+
+					setTimeout(function() {
+						document.querySelector('body').classList.remove('noscroll');
+						document.removeEventListener('DOMContentLoaded', noscroll);
+					}, 800)
+				} else {
+					requestAnimationFrame(fade);
+				}
+			})();
+		}
+	</script>
 
 	<link rel="stylesheet" href="css/main.min.css">
 	<script src="js/scripts.min.js"></script>

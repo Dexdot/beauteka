@@ -11,10 +11,15 @@ body
 	opacity: 1
 	position: relative
 	overflow-x: hidden
+	&.noscroll
+		position: fixed
+		overflow-y: scroll
+		width: 100vw
 section, footer
 	z-index: 10
 	background: linear-gradient(to right, #f4f7fd 0%,#fbf8f6 100%)
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f7fd', endColorstr='#fbf8f6',GradientType=1 )
+
 /* 
 	1. Main
 	2. About
@@ -57,6 +62,9 @@ section, footer
 	font-size: 44px
 	margin-bottom: 20px
 	line-height: 1.2
+.section-description
+	opacity: 0
+	transform: translateY(180%)
 .text-center
 	text-align: center
 .arrow-down
@@ -126,10 +134,13 @@ section, footer
 		&.mob
 			display: none
 
-
 .letter
 	min-width: 0.3em
 	display: inline-block
+	opacity: 0
+	transform: translateX(100%)
+
+
 // Main
 .blur
 	position: absolute
@@ -139,7 +150,7 @@ section, footer
 	height: 100vh
 	z-index: -1
 	filter: blur(3px)
-	transform: scale(1.02)
+	transform: scale(1.2)
 	&::before
 		content: ''
 		position: absolute
@@ -190,22 +201,24 @@ section, footer
 		font-size: 12px
 		line-height: 1.8
 		margin-top: 30px
+		opacity: 0
+		transform: translateY(100%)
 
 #mask
 	transform: scale(0.003)
 .logo-video
 	position: absolute
 	left: calc(50% + 133px)
-	transform: translate(-50%, -50%) scale(1)
+	transform: translate(-31%, -31%) scale(2)
 	width: 700px
 	height: 700px
 	z-index: 11
 	&.anim
-		animation: tra 2s ease-in-out 600ms 1 normal
+		animation: lgv 800ms ease-in-out 0ms 1 forwards
 	& > div
 		clip-path: url(#mask)
 
-@keyframes tra
+@keyframes lgv
 	0%
 		transform: translate(-31%, -31%) scale(2)
 	100%
@@ -464,6 +477,9 @@ section, footer
 	height: 345px
 	transition: 0.2s ease-out
 	backface-visibility: hidden
+	img
+		transition: 0.2s ease-out
+		height: auto
 	&::before
 		content: ''
 		position: absolute
@@ -483,21 +499,23 @@ section, footer
 	&:hover
 		&::before
 			opacity: 1
-			transform: scale(1) translate(-50%, -50%)
+			transform: scale(1.1) translate(-50%, -50%)
 	&-left
 		left: 0
+		transform: scale(1) rotate(0) translateX(-200%)
 		&:hover
-			transform: scale(1.1) rotate(-5deg)
+			img
+				transform: scale(1.1) rotate(-5deg)
 		img
 			width: 250px
 	&-right
 		right: 0
+		transform: scale(1) rotate(0) translateX(200%)
 		&:hover
-			transform: scale(1.1) rotate(5deg)
+			img
+				transform: scale(1.1) rotate(5deg)
 		img
 			width: 310px
-	img
-		height: auto
 .petal
 	position: absolute
 	height: auto
@@ -552,8 +570,20 @@ section, footer
 		top: 780px
 		width: 20px
 		left: 30px
-
-
+	&-top
+		&-left
+			opacity: 0
+			transform: translate(-200%, -200%)
+		&-right
+			opacity: 0
+			transform: translate(200%, -200%)
+	&-bottom
+		&-left
+			opacity: 0
+			transform: translate(-200%, 200%)
+		&-right
+			opacity: 0
+			transform: translate(200%, 200%)
 
 // Experts
 #experts
@@ -1072,7 +1102,6 @@ section, footer
 		transition: 0.2s ease-out
 	&__leaf
 		position: absolute
-		transition: all 0.4s ease-in-out
 		&-left
 			width: 800px
 			height: 784px
@@ -1080,8 +1109,6 @@ section, footer
 			left: -320px
 			transform-origin: 0% 100%
 			transform: rotate(15deg)
-			&:hover
-				transform: rotate(-10deg)
 		&-right
 			width: 546px
 			height: 673px
@@ -1089,8 +1116,6 @@ section, footer
 			right: -140px
 			transform-origin: 100% 100%
 			transform: rotate(-25deg)
-			&:hover
-				transform: rotate(10deg)
 
 
 // Contacts
@@ -1122,6 +1147,7 @@ section, footer
 	&-wrap
 		position: relative
 		min-height: 504px
+		transform: scale(0.2)
 
 .social
 	li
