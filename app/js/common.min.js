@@ -4,6 +4,7 @@ $(function() {
 	// Menu navigation script (toggling)
 		$('.hamburger, .nav__link').click(function() {
 			$('.hamburger').toggleClass('is-active');
+			$('.nav__link').toggleClass('is-visible');
 			$('.nav').toggleClass('is-active');
 			$('.petal').toggleClass('nozindex');
 		});

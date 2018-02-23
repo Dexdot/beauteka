@@ -1079,21 +1079,48 @@
 		position: fixed
 		top: 0
 		left: 0
+		padding: 30px
+
 		display: flex
 		flex-direction: column
-		align-items: center
+		align-items: flex-start
 		justify-content: center
-		background: #00b859
+
+		background: linear-gradient(to right, #f4f7fd 0%,#fbf8f6 100%)
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f7fd', endColorstr='#fbf8f6',GradientType=1 )
+
 		z-index: 5
-		line-height: 3
+		line-height: 2.2
 		transform: translateX(100%)
-		transition: transform 0.3s ease-out
+		transition: transform 0.5s cubic-bezier(.71,.01,.34,.99)
 		&.is-active
 			transform: translateX(0)
-		&__link.desk
-			display: none
-		&__link.mob
-			display: block
+		li
+			overflow: hidden
+		&__link
+			margin-left: 0
+			color: #333
+			font-size: 3.4vmax
+			text-transform: none
+			white-space: nowrap
+			position: relative
+			&::before
+				content: ''
+				position: absolute
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				background: #f4f7fd
+				transition: 0.2s ease-in-out 0.45s
+			&.is-visible
+				&::before
+					transform: translateY(100%)
+			&.desk
+				display: none
+			&.mob
+				display: block
+	
 	.blur
 		transform: scale(1.03)
 	.main
