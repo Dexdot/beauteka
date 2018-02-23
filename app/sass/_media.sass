@@ -1014,6 +1014,10 @@
 		min-height: 700px
 	.subscribe
 		width: 30%
+		&-header
+			display: block
+			margin: 0 auto
+			margin-bottom: 20px
 		&__leaf
 			&-left
 				width: 510px
@@ -1378,10 +1382,12 @@
 	// Products
 	#products
 		padding-top: 80px
+		padding-bottom: 100px
 	.products
 		&-desc
 			font-size: 13px
 			max-width: 80%
+			margin: 0 auto 100px auto
 	.product
 		$prPetal: 2
 		&-petal
@@ -1428,6 +1434,11 @@
 	
 	// Subscribe
 	.subscribe
+		width: 80%
+		&-header
+			max-width: 240px
+		&-desc
+			width: 90%
 		&__leaf
 			&-left
 				width: 400px
@@ -1435,16 +1446,12 @@
 				top: 200px
 				left: -120px
 				transform: rotate(-15deg)
-				&:hover
-					transform: rotate(-50deg)
 			&-right
 				transform: rotate(0deg)
 				width: 272px
 				height: 336px
 				right: -110px
 				top: 150px
-				&:hover
-					transform: rotate(50deg)
 
 	#contacts
 		padding-bottom: 30px

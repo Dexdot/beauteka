@@ -215,6 +215,8 @@ section, footer
 	z-index: 11
 	&.anim
 		animation: lgv 800ms ease-in-out 0ms 1 forwards
+	&.ie
+		display: none
 	& > div
 		clip-path: url(#mask)
 
@@ -929,6 +931,7 @@ section, footer
 	display: flex
 	flex-direction: row
 	justify-content: flex-start
+	transform: rotate(-3deg) translateX(400%)
 	&__img
 		width: 107px
 		height: 203px
@@ -1313,6 +1316,8 @@ section, footer
 // Footer
 #footer
 	padding-bottom: 40px
+	&.ie
+		padding-bottom: 100px
 .footer
 	li
 		display: inline-block
