@@ -548,7 +548,6 @@ $(function() {
 				offset: -400,
 				duration: 460
 			})
-			.addIndicators({name: 'prod petals'})
 			.setTween(prodPetalsTween)
 			.addTo(controller);
 
