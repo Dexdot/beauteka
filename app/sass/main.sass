@@ -75,23 +75,24 @@ section, footer
 	position: relative
 	fill: #333
 
-// source
-@keyframes circleIn
+
+@keyframes circleIn1
 	0%
-		stroke-dashoffset: 350
+		stroke-dashoffset: 570
 		transform: rotate(-45deg)
 	100%
 		stroke-dashoffset: 0
 		transform: rotate(0)
 @keyframes mouseoverAnim
 	0%
+		stroke-dasharray: 1
 		stroke-dashoffset: 0
-		stroke: #00b859
 		transform: rotate(-45deg)
 	100%
+		stroke-dasharray: 3
 		stroke-dashoffset: 0
-		stroke: #00b859
 		transform: rotate(0)
+
 
 // Header
 .hamburger 
@@ -326,149 +327,240 @@ section, footer
 		+proxima(reg)
 		font-size: 26px
 		color: #333
-	&-link
-		position: relative
-		+osnova(md)
-		color: #333
-		font-size: 13px
-		cursor: pointer
+	&__link
 		display: block
 		margin: 0 auto
 		width: 225px
-		height: 80px
-		transform: translate(20px, -30px)
-		transform-box: fill-box
-		transition: 0.2s ease-out
-		&__arrow
-			position: absolute
-			top: 5px
-			left: 20px
-			width: 185px
-			transition: 0.2s ease-out
-			backface-visibility: hidden
-			transform-origin: 50% 50%
-			transform-box: fill-box
-			height: 45px
-			path
-				transition: 0.2s ease-in-out
-				transform-origin: 50% 50%
-				transform-box: fill-box
-				&:first-child
-					fill: #333
-				&:last-child
-					animation: circleIn 1s cubic-bezier(.645,.045,.355,1) forwards
-					stroke: #00b859
-					stroke-dasharray: 350
-					stroke-dashoffset: 350
-					fill: none
+		height: 50px
+		cursor: pointer
+		position: relative
+		transform: translate(60px, -30px)
 		&.is-down
-			transform: translate(20px, 140px)
-		&:focus
+			transform: translate(60px, 140px)
+		&-text
+			+osnova(md)
 			color: #333
+			font-size: 13px
+			display: inline-block
+			transform: translate(-40px, -4px)
+		&-circle
+			width: 60px
+			height: 60px
+			position: absolute
+			top: 0px
+			left: 91px
+			transition: transform .3s
+			svg
+				position: absolute
+				top: 1px
+				left: 10%
+				width: 80%
+				height: 80%
+				transform-origin: 50% 50%
+				transition: all .3s cubic-bezier(.215,.61,.355,1), opacity .7s
+				path
+					fill: none
+					stroke: #00b859
+					stroke-width: 3px
+					stroke-dasharray: 570
+					stroke-dashoffset: 570
+					transform-origin: 50% 50%
+					animation: circleIn1 1s cubic-bezier(.645,.045,.355,1) forwards
+		&-line
+			width: 120px
+			position: absolute
+			left: 0px
+			top: 50%
+			.line
+				width: 100%
+				position: absolute
+				height: 1px
+				left: 0
+				background: #333
+				transform-origin: 0 0
+				transform: scale(1,1) translate(3px,0)
+				transition: transform .2s ease-out,width .2s ease-out,background .2s,-webkit-transform .2s ease-out
+			.arrow1, .arrow2
+				background: #333
+				position: absolute
+				left: 99%
+				width: 4px
+				height: 1px
+				transition: all .3s cubic-bezier(.215,.61,.355,1)
+			.arrow1
+				top: -2px
+				transform: rotate(45deg)
+				transform-origin: 50% 100%
+			.arrow2
+				top: 2px
+				transform: rotate(-45deg)
+				transform-origin: 50% 0%
 		&:hover
-			color: #00B859
-			.test-link__arrow
-				transform: scale(1.14) translate(15px,0)
-				path:last-child
-					animation: mouseoverAnim 1.2s cubic-bezier(.785,.135,.15,.86) forwards
-	&-card
-		box-shadow: 0px 8px 38px 0px rgba(12, 45, 67, 0.1)
-		border-radius: 10px
-		background: #fff
-		padding: 20px
-		width: 500px
-		min-height: 300px
-		margin: 0 auto 38px auto
+			.test__link-circle
+				transform: translateX(22px)
+				svg
+					top: -5px
+					left: 0
+					width: 100%
+					height: 100%
+					path
+						animation: mouseoverAnim 1.2s cubic-bezier(.785,.135,.15,.86) forwards
+			.test__link-line
+				.line
+					transform: scale(1.17,1) translate(5px,0)
+					background: #00b859
+				.arrow1, .arrow2
+					left: 119%
+					background: #00b859
+
+.test-card
+	box-shadow: 0px 8px 38px 0px rgba(12, 45, 67, 0.1)
+	border-radius: 10px
+	background: #fff
+	padding: 20px
+	width: 500px
+	min-height: 300px
+	margin: 0 auto 38px auto
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	&__cover
+		padding: 48px 8px 8px 8px
+		width: 100%
+		position: relative
+		background: url(../img/test/fin.jpg) no-repeat center
+		background-size: cover
 		display: flex
 		flex-direction: column
+		align-items: center
 		justify-content: space-between
-		&__cover
-			padding: 48px 8px 8px 8px
-			width: 100%
-			position: relative
-			background: url(../img/test/fin.jpg) no-repeat center
-			background-size: cover
-			display: flex
-			flex-direction: column
-			align-items: center
-			justify-content: space-between
-		&__logo
-			width: 123px
-			height: 36px
+	&__logo
+		width: 123px
+		height: 36px
+		position: absolute
+		top: 12px
+		left: 16px
+	&__title
+		color: #fff
+		+phil
+		font-size: 33px
+		text-shadow: 0px 0px 9px #0c2d43
+	&__info
+		width: 70%
+		color: #fff
+		+osnova(reg)
+		font-size: 14px
+		line-height: 1.6
+		margin-bottom: 40px
+	&__desc
+		color: #fff
+		+osnova(lt)
+		font-size: 12px
+	&__footer
+		margin-top: 20px
+		display: flex
+		flex-direction: row
+		align-items: center
+		justify-content: space-between
+	&__share
+		color: #333
+		+osnova(md)
+		font-size: 12px
+		display: flex
+		align-items: center
+	&__social
+		width: 34px
+		height: 34px
+		margin-left: 12px
+	&__link
+		display: block
+		margin: 0 auto
+		width: 170px
+		height: 50px
+		cursor: pointer
+		position: relative
+		transform: translate(50%, 0)
+		&-text
+			+osnova(md)
+			color: #333
+			font-size: 12px
+			display: inline-block
+			transform: translateX(-65px)
+		&-circle
+			width: 60px
+			height: 60px
 			position: absolute
-			top: 12px
-			left: 16px
-		&__title
-			color: #fff
-			+phil
-			font-size: 33px
-			text-shadow: 0px 0px 9px #0c2d43
-		&__info
-			width: 70%
-			color: #fff
-			+osnova(reg)
-			font-size: 14px
-			line-height: 1.6
-			margin-bottom: 40px
-		&__desc
-			color: #fff
-			+osnova(lt)
-			font-size: 12px
-		&__footer
-			margin-top: 20px
-			display: flex
-			flex-direction: row
-			align-items: center
-			justify-content: space-between
-		&__share
-			color: #333
-			+osnova(md)
-			font-size: 12px
-			display: flex
-			align-items: center
-		&__social
-			width: 34px
-			height: 34px
-			margin-left: 12px
-		&__link
-			position: relative
-			+osnova(md)
-			color: #333
-			font-size: 12px
-			transform: translate(-60px, -15px)
-			transition: color 0.2s ease-out
-			cursor: pointer
-			white-space: nowrap
-			&-arrow
+			top: 0px
+			left: 91px
+			transition: transform .3s
+			svg
 				position: absolute
-				top: 0px
-				left: 30px
-				width: 140px
-				transition: 0.2s ease-out
+				top: 1px
+				left: 10%
+				width: 80%
+				height: 80%
 				transform-origin: 50% 50%
-				transform-box: fill-box
+				transition: all .3s cubic-bezier(.215,.61,.355,1), opacity .7s
 				path
-					transition: 0.2s ease-in-out
-					&:first-child
-						fill: #333
-					&:last-child
-						animation: circleIn 1s cubic-bezier(.645,.045,.355,1) forwards
-						transform-origin: 50% 50%
-						transform-box: fill-box
-						stroke: #00b859
-						stroke-dasharray: 570
-						stroke-dashoffset: 570
-						fill: none
-			&:focus
-				color: #333
-			&:hover
-				.test-card__link-arrow
-					transform: scale(1.10) translate(15px,0)
-					path:last-child
+					fill: none
+					stroke: #00b859
+					stroke-width: 3px
+					stroke-dasharray: 570
+					stroke-dashoffset: 570
+					transform-origin: 50% 50%
+					animation: circleIn1 1s cubic-bezier(.645,.045,.355,1) forwards
+		&-line
+			width: 120px
+			position: absolute
+			left: 0px
+			top: 50%
+			.line
+				width: 100%
+				position: absolute
+				height: 1px
+				left: 0
+				background: #333
+				transform-origin: 0 0
+				transform: scale(1,1) translate(3px,0)
+				transition: transform .2s ease-out,width .2s ease-out,background .2s,-webkit-transform .2s ease-out
+			.arrow1, .arrow2
+				background: #333
+				position: absolute
+				left: 99%
+				width: 4px
+				height: 1px
+				transition: all .3s cubic-bezier(.215,.61,.355,1)
+			.arrow1
+				top: -2px
+				transform: rotate(45deg)
+				transform-origin: 50% 100%
+			.arrow2
+				top: 2px
+				transform: rotate(-45deg)
+				transform-origin: 50% 0%
+		&:hover
+			.test-card__link-circle
+				transform: translateX(22px)
+				svg
+					top: -5px
+					left: 0
+					width: 100%
+					height: 100%
+					path
 						animation: mouseoverAnim 1.2s cubic-bezier(.785,.135,.15,.86) forwards
-				color: #00B859
-		.test__number
-			color: #fff
+			.test-card__link-line
+				.line
+					transform: scale(1.17,1) translate(5px,0)
+					background: #00b859
+				.arrow1, .arrow2
+					left: 119%
+					background: #00b859
+
+
+
+
+	.test__number
+		color: #fff
 .leaf
 	position: absolute
 	bottom: -30%
@@ -950,46 +1042,87 @@ section, footer
 		+osnova(md)
 		margin-bottom: 28px
 	&__link
-		+osnova(reg)
-		font-size: 12px
-		color: #333
 		display: block
+		width: 140px
+		height: 43px
+		cursor: pointer
 		position: relative
-		width: 145px
-		height: 45px
-		transition: 0.2s ease-out
-		&-arrow
+		transform: translateX(15px)
+		&-text
+			+osnova(reg)
+			color: #333
+			font-size: 12px
+			display: inline-block
+			transform: translate(-15px, -4px)
+		&-circle
+			width: 50px
+			height: 50px
 			position: absolute
-			width: 100px
-			height: 40px
-			bottom: 0px
-			left: 20px
-			transition: 0.2s ease-out
-			backface-visibility: hidden
-			transform-origin: 50% 50%
-			transform-box: fill-box
-			path
-				transition: 0.2s ease-in-out
-				&:first-child
-					fill: #333
-				&:last-child
-					animation: circleIn 1s cubic-bezier(.645,.045,.355,1) forwards
-					transform-origin: 50% 50%
-					transform-box: fill-box
-					stroke: #00b859
-					stroke-dasharray: 350
-					stroke-dashoffset: 350
-					fill: none
-		&:focus
-			color: #00b859
-		&:hover
-			color: #00b859
-			.product__link-arrow
-				transform: scale(1.15) translate(15px,0)
+			top: 0px
+			left: 66px
+			transition: transform .3s
+			svg
+				position: absolute
+				top: 2px
+				left: 10%
+				width: 80%
+				height: 80%
+				transform-origin: 50% 50%
+				transition: all .3s cubic-bezier(.215,.61,.355,1), opacity .7s
 				path
-					&:last-child
-						fill: #00b859
+					fill: none
+					stroke: #00b859
+					stroke-width: 3px
+					stroke-dasharray: 570
+					stroke-dashoffset: 570
+					transform-origin: 50% 50%
+					animation: circleIn1 1s cubic-bezier(.645,.045,.355,1) forwards
+		&-line
+			width: 90px
+			position: absolute
+			left: 0px
+			top: 50%
+			.line
+				width: 100%
+				position: absolute
+				height: 1px
+				left: 0
+				background: #333
+				transform-origin: 0 0
+				transform: scale(1,1) translate(3px,0)
+				transition: transform .2s ease-out,width .2s ease-out,background .2s,-webkit-transform .2s ease-out
+			.arrow1, .arrow2
+				background: #333
+				position: absolute
+				left: 99%
+				width: 4px
+				height: 1px
+				transition: all .3s cubic-bezier(.215,.61,.355,1)
+			.arrow1
+				top: -2px
+				transform: rotate(45deg)
+				transform-origin: 50% 100%
+			.arrow2
+				top: 2px
+				transform: rotate(-45deg)
+				transform-origin: 50% 0%
+		&:hover
+			.product__link-circle
+				transform: translateX(17px)
+				svg
+					top: -2px
+					left: 0
+					width: 100%
+					height: 100%
+					path
 						animation: mouseoverAnim 1.2s cubic-bezier(.785,.135,.15,.86) forwards
+			.product__link-line
+				.line
+					transform: scale(1.17,1) translate(5px,0)
+					background: #00b859
+				.arrow1, .arrow2
+					left: 119%
+					background: #00b859
 	&-petal
 		&-1
 			top: 25% // 190px

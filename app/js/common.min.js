@@ -74,7 +74,7 @@ $(function() {
 	// Test
 
 		var test = function() {
-			var nextBtn = $('.test-link');
+			var nextBtn = $('.test__link');
 			var restartBtn = $('.test-card__link');
 			var allTests = $('.test div[data-test]');
 

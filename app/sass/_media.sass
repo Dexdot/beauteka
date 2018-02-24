@@ -68,12 +68,13 @@
 			max-width: 450px
 		&__text
 			font-size: 28px
-		&-link
-			font-size: 14px
-			width: 245px
-			bottom: 50px
-			&__arrow
-				left: 40px
+		&__link
+			transform: translate(60px, -30px)
+			&.is-down
+				transform: translate(60px, 140px)
+			&-text
+				transform: translate(-50px, -4px)
+				font-size: 14px
 		&__answer--final
 			max-width: 570px
 		&-final
@@ -100,7 +101,9 @@
 			&__social
 				margin-left: 14px
 			&__link
-				font-size: 13px
+				transform: translate(65%, 0)
+				&-text
+					font-size: 13px
 	.leaf
 		width: 415px
 		height: 415px
@@ -216,7 +219,7 @@
 		&__title
 			font-size: 22px
 			margin-bottom: 32px
-		&__link
+		&__link-text
 			font-size: 13px
 		&-petal
 			&-1
@@ -413,12 +416,13 @@
 			max-width: 520px
 		&__text
 			font-size: 30px
-		&-link
-			font-size: 16px
-			bottom: 0
-			width: 250px
-			&__arrow
-				left: 45px
+		&__link
+			transform: translate(70px, -30px)
+			&.is-down
+				transform: translate(70px, 140px)
+			&-text
+				transform: translate(-70px, -5px)
+				font-size: 16px
 		&__answer--final
 			max-width: 650px
 		&-final
@@ -445,7 +449,9 @@
 			&__social
 				margin-left: 16px
 			&__link
-				font-size: 14px
+				transform: translate(85%, 0)
+				&-text
+					font-size: 14px
 	.leaf
 		width: 495px
 		height: 495px
@@ -564,7 +570,10 @@
 			font-size: 24px
 			margin-bottom: 38px
 		&__link
-			font-size: 14px
+			transform: translateX(20px)
+			&-text
+				transform: translate(-20px, -4px)
+				font-size: 14px
 		&-petal
 			&-1
 				width: 28px
@@ -1189,10 +1198,7 @@
 				height: 30px
 				margin-left: 10px
 			&__link
-				transform: translate(-55px, -10px)
-				&-arrow
-					width: 120px
-					left: 45px
+				transform: translate(70px, 0)
 		&-final
 			&__arrow
 				width: 55px
@@ -1356,7 +1362,8 @@
 				justify-content: flex-start
 				height: 90px
 			&__link
-				transform: translate(0px,10px)
+				transform: translate(35px,10px)
+				margin: 0
 		&__btns
 			flex-direction: column
 		&__btn
@@ -1371,6 +1378,9 @@
 			margin: 10px 0 6px 0
 		&__text
 			font-size: 18px
+		&__link
+			&.is-down
+				transform: translate(60px, 180px)
 		&__number
 			font-size: 14px
 			span
