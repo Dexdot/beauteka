@@ -621,11 +621,15 @@
 			height: 19px
 		&__leaf
 			&-left
-				width: 952px
-				height: 933px
+				// width: 952px
+				width: 55vw
+				// height: 933px
+				height: auto
 			&-right
-				width: 650px
-				height: 801px
+				// width: 650px
+				width: 38vw
+				// height: 801px
+				height: auto
 	
 
 	// Contacts
@@ -697,7 +701,8 @@
 @media only screen and (min-width : 1689px) and (min-height : 1000px)
 	.test-link
 		bottom: 7%
-
+	#about
+		max-height: 1000px
 
 
 
@@ -1280,6 +1285,7 @@
 		padding-top: 0
 		&-wrap
 			min-height: auto
+			transform: scale(1)
 		&-header
 			margin-bottom: 40px
 		&__info
@@ -1335,6 +1341,14 @@
 		transform: scale(1.17)
 
 	// About
+	body.mob
+		#about
+			min-height: auto
+			padding-top: 12%
+			padding-bottom: 12%
+		.about
+			position: static
+			transform: translateY(0)
 	.about
 		&__desc
 			font-size: 13px
