@@ -6,15 +6,14 @@ $(function() {
 	if (isMobile) $('body').addClass('mob');
 
 
-	// Menu navigation script (toggling)
-		$('.hamburger, .nav__link').click(function() {
+	// Menu navigation
+		$('.hamburger, .nav__link, .nav-mob__link, .nav-mob__footer-link').click(function() {
 			$('.hamburger').toggleClass('is-active');
-			$('.nav__link').toggleClass('is-visible');
-			$('.nav').toggleClass('is-active');
+			$('.nav-mob').toggleClass('is-active');
 			$('.petal').toggleClass('nozindex');
 		});
 
-	// Smooth scroll
+	// Smooth scroll (anchors)
 		$("a[href*='#']").on('click', function(event) {
 			event.preventDefault();
 	    var target = $(this).attr('href');
@@ -67,7 +66,7 @@ $(function() {
 			setTops();
 		});
 
-	// Split
+	// Разделение заголовкой побуквенно
 
 		if (!isMobile) {
 			$('.main__header, .section-header').addClass('js-splitme');
@@ -80,55 +79,69 @@ $(function() {
 
 	// Test
 
-		var test = function() {
-			var nextBtn = $('.test__link');
-			var restartBtn = $('.test-card__link');
-			var allTests = $('.test div[data-test]');
-
-			nextBtn.on('click', function() {
-				allTests.hide();
-
-				var target = $(this).attr('href');
-				var top = $(target).offset().top;
-
-				var testIndex = +$(this).attr('data-test');
-
-				switch (testIndex) {
-
-					// С листьев на вопросы
-					case 1:
-						testIndex++;
-						$(this).attr('data-test', testIndex);
-						nextBtn.removeClass('is-down');
-						break;
-
-					// С ласт вопроса к итогу
-					case allTests.length - 1:
-						testIndex++;
-						$(this).attr('data-test', testIndex);
-						nextBtn.hide();
-						break;
-					default:
-						testIndex++;
-						$(this).attr('data-test', testIndex);
-						break;
-				}
-
-				// Записываем индекс в атрибут и показываем следующий вопрос
-				$(this).attr('data-test', testIndex);
-				$('.test div[data-test="' + testIndex + '"]').show();
+		// Анимация появления ответа и кнопки "Следующий вопрос" при нажатии на кнопку
+			$('.test__btn').on('click', function() {
+				new TimelineMax()
+				.to('.test__answer', 0.6, {ease: Power1.easeOut, opacity: 1, y: '0%', 'pointer-events': 'auto'})
+				.to('.test__link', 0.6, {ease: Power1.easeOut, opacity: 1, y: '0%', 'pointer-events': 'auto'}, '-=0.4');
 			});
 
-			// Возвращаемся в начало
-			restartBtn.on('click', function() {
-				allTests.hide();
-				nextBtn.attr('data-test', 1);
-				nextBtn.addClass('is-down');
-				nextBtn.show();
-				$('.test div[data-test="1"]').show();
+		// Первый вопрос с листьями
+			var onLeftLeafClick = function() {
+				var answer = 'Видите, как легко ошибиться. Соберитесь, дальше вопросы будут сложнее.';
+
+				$('.test__answer--first').text(answer);
+				new TimelineMax()
+					.to('.test__text', 0.4, {opacity: 0, onComplete: function(){
+						$('.test__text').text('Неверно!');
+					}})
+					.fromTo('.test__text', 0.4, {opacity: 0, y: '60%'}, {opacity: 1, y: '0%'})
+					.to('.test__answer--first', 0.6, {ease: Power1.easeOut, opacity: 1, y: '0%', 'pointer-events': 'auto'}, '-=0.2')
+					.to('.test__link', 0.4, {opacity: 1, y: '0%', 'pointer-events': 'auto'}, '-=0.4')
+
+				$('.leaf-left').off('click', onLeftLeafClick);
+				$('.leaf-right').off('click', onRightLeafClick);
+			};
+			var onRightLeafClick = function() {
+				var answer = 'Дальше вопросы будут сложнее, поэтому соберитесь.';
+				$('.test__answer--first').text(answer);
+				new TimelineMax()
+					.to('.test__text', 0.4, {opacity: 0, onComplete: function(){
+						$('.test__text').text('Верно!');
+					}})
+					.fromTo('.test__text', 0.4, {opacity: 0, y: '60%'}, {opacity: 1, y: '0%'})
+					.to('.test__answer--first', 0.6, {ease: Power1.easeOut, opacity: 1, y: '0%', 'pointer-events': 'auto'}, '-=0.2')
+					.to('.test__link', 0.4, {opacity: 1, y: '0%', 'pointer-events': 'auto'}, '-=0.4')
+
+				$('.leaf-left').off('click', onLeftLeafClick);
+				$('.leaf-right').off('click', onRightLeafClick);
+			};
+
+			$('.leaf-left').on('click', onLeftLeafClick);
+			$('.leaf-right').on('click', onRightLeafClick);
+
+		// border-radius для rect (адаптив)
+			var setButtonBrs = function() {
+				mediaQueries(2999, function() {
+					var brs = 65;
+					$('.test__btn svg rect').attr('rx', brs);
+					$('.test__btn svg rect').attr('ry', brs);
+				});
+				mediaQueries(1689, function() {
+					var brs = 50;
+					$('.test__btn svg rect').attr('rx', brs);
+					$('.test__btn svg rect').attr('ry', brs);
+				});
+				mediaQueries(1399, function() {
+					var brs = 40;
+					$('.test__btn svg rect').attr('rx', brs);
+					$('.test__btn svg rect').attr('ry', brs);
+				});
+			};
+			setButtonBrs();
+			$(window).on('resize', function() {
+				setButtonBrs();
 			});
-		};
-		test();
 
 	// Experts
 
@@ -168,6 +181,7 @@ $(function() {
 			innerHeight = getMax(innerHeights);
 
 			var mqFlag = 0;
+
 			// Задаем картинкам нужный top
 			for (var i = 0; i < experts.length; i++) {
 				mediaQueries(991, function() {
@@ -289,7 +303,7 @@ $(function() {
 				.to(openedContent, 0.4, {ease: easing, opacity: 1},
 					switching ? '-=0.6' : '+=0')
 				.from($(openedContent).find('.expert-opened__title'), 0.6, {ease: easing, opacity: 0, y: '-50%'}, '-=0.4')
-				.from($(openedContent).find('.expert-opened__article'), 0.6, {ease: easing, opacity: 0, y: '100%'}, '-=0.4')
+				.from($(openedContent).find('.expert-opened__article'), 0.6, {ease: easing, opacity: 0, y: '100%'}, '-=0.6')
 				.to($(openedContent).find('.expert-opened__img'), 0.4, {ease: easing, x: '0%'}, '-=0.4')
 				.to('.expert.is-closed .expert-closed__title', 0, {'pointer-events': 'auto'}, '-=0.4')
 				.to('.expert.is-closed .expert-closed__title', 0.4, {opacity: 1}, '-=0.4')
@@ -442,25 +456,25 @@ $(function() {
 		// Logo video scene
 
 			if (!isMobile) {
-				var logoVideoTween, vpWidth = 0;
+				var logoVideoTween, viewportWidth = 0;
 				mediaQueries(3000, function() {
-					vpWidth = 3000;
+					viewportWidth = 3000;
 				});
 				mediaQueries(900, function() {
-					vpWidth = 900;
+					viewportWidth = 900;
 				});
 				mediaQueries(767, function() {
-					vpWidth = 767;
+					viewportWidth = 767;
 				});
 				mediaQueries(480, function() {
-					vpWidth = 480;
+					viewportWidth = 480;
 				});
 
 				var removeAnim = function() {
 					$('.logo-video').css('animation', 'none');
 				}
 
-				switch (vpWidth) {
+				switch (viewportWidth) {
 
 					case 900:
 					  logoVideoTween = new TimelineMax()
@@ -526,8 +540,18 @@ $(function() {
 
 		// Leafs
 
+			// Анимация подписей после того, как приехали листья
+			var isAnimTestHead = false;
+			var animTestHead = function() {
+				if (!isAnimTestHead) {
+					new TimelineMax().staggerTo('[data-test-anim]', 0.6,
+						{opacity: 1, y: '0%'}, 0.25);
+				}
+				isAnimTestHead = true;
+			};
+
 			var leafLeftTween = new TimelineMax()
-			.to('.leaf-left', 2, {ease: easing, x: '0%'})
+			.to('.leaf-left', 2, {ease: easing, x: '0%', onComplete: animTestHead})
 
 			new ScrollMagic.Scene({
 				triggerElement: '#test',
@@ -550,7 +574,7 @@ $(function() {
 		
 		// Petals
 
-			var petalsTween = new TimelineMax().to('.petals .petal', 0.4, {ease: easing, opacity: 1, x: '0%', y: '0%', scale: 1});
+			var petalsTween = new TimelineMax().to('.petals .petal', 0.4, {ease: easing, opacity: 1, x: '0%', y: '0%'});
 
 			new ScrollMagic.Scene({
 				triggerElement: '.about__desc',
@@ -589,26 +613,12 @@ $(function() {
 			.setTween(subRightTween)
 			.addTo(controller);
 
-		// Contacts map
-
-			if (!isMobile) {
-				var sc = new ScrollMagic.Scene({
-					offset: $('#contacts').offset().top - Math.floor(window.innerHeight / 2),
-					triggerHook: 'onEnter'
-				})
-				.on('enter', function() {
-					new TimelineMax().to('.contacts-wrap', 1, {ease: easing, scale: 1});
-				})
-				.addTo(controller)
-				console.log(sc.offset());
-			}
-
 		// Products
 			var prodTween = new TimelineMax()
 			.staggerTo('.product', 1.6, {x: '0%'}, 0.2)
 			.staggerTo('.product', 0.5, {rotation: 1}, 0.1, '-=0.6')
 			.staggerTo('.product', 0.3, {rotation: 0}, 0.08, '-=0.3')
-			.staggerTo('.product__title', 0.8, {ease: easing, opacity: 1, y: '0%'}, 0.2, '-=0.8')
+			.staggerTo('.product__title', 0.8, {ease: easing, opacity: 1, y: '0%'}, 0.2, '-=1.2')
 			.staggerFrom('.product__link', 0.6, {ease: easing, opacity: 0, y: '50%'}, 0.2, '-=1.2')
 
 			new ScrollMagic.Scene({
@@ -653,11 +663,20 @@ $(function() {
 				$('.blur video, .logo-video video').stop();
 			} else {
 				$(window).on('scroll', function() {
+
+					// Скрываем большое видео, если проскроллили первую секцию
 					var main = $('#main');
 					if (window.pageYOffset > main.height()) {
+						document.querySelector('.blur video').pause();
+					} else {
 						$(videos).each(function(i, v) {
-							v.pause();
+							v.play();
 						});
+					}
+
+					// Скрываем видео в лого, если проскроллили вторую секцию
+					if (window.pageYOffset > $('#test').offset().top) {
+						document.querySelector('.logo-video video').pause();
 					} else {
 						$(videos).each(function(i, v) {
 							v.play();
@@ -666,6 +685,7 @@ $(function() {
 				});
 			}
 
+	// Util functions
 	function getMax(numArr) {
 		if (!numArr) return;
 		var max = numArr[0];
@@ -687,7 +707,8 @@ $(function() {
 		mql.addListener(handleMatchMedia);
 	}
 
-	// IE
+	// IE detect
+
 		var version = detectIE();
 
 		if (version === false) {
@@ -733,7 +754,7 @@ $(function() {
 		  return false;
 		}
 
-	// Mobile map (< 767px)
+	// Mobile google map (< 767px)
 		var initMobMap = function() {
 			var moscowCenter = {lat: 55.751132, lng: 37.624252};
 			var mapStyles = [
@@ -928,7 +949,7 @@ $(function() {
 
 });
 
-// Main map (> 767px)
+// Desktop google map (> 767px)
 var initMap = function() {
 	var moscowCenter = {lat: 55.751132, lng: 37.624252};
 	var mapStyles = [

@@ -40,7 +40,9 @@
 	
 	// Test
 	#test
-		min-height: 1080px
+		min-height: 980px
+		padding-top: 200px
+		margin-top: -200px
 	.test
 		&-head
 			margin-bottom: 110px
@@ -66,12 +68,12 @@
 		&__answer
 			font-size: 14px
 			max-width: 450px
+			&--first
+				max-width: 23%
 		&__text
 			font-size: 28px
 		&__link
-			transform: translate(60px, -30px)
-			&.is-down
-				transform: translate(60px, 140px)
+			left: 60px
 			&-text
 				transform: translate(-50px, -4px)
 				font-size: 14px
@@ -387,7 +389,9 @@
 
 	// Test
 	#test
-		min-height: 1250px // for first test
+		min-height: 1150px // for first test
+		padding-top: 300px
+		margin-top: -300px
 	.test
 		&-head
 			margin-bottom: 130px
@@ -411,15 +415,17 @@
 			margin-left: 18px
 			margin-right: 18px
 			font-size: 16px
+			padding: 5px 30px
 		&__answer
 			font-size: 16px
 			max-width: 520px
+			&--first
+				max-width: 23%
 		&__text
 			font-size: 30px
 		&__link
-			transform: translate(70px, -30px)
-			&.is-down
-				transform: translate(70px, 140px)
+			left: 70px
+			// top: -30px
 			&-text
 				transform: translate(-70px, -5px)
 				font-size: 16px
@@ -703,8 +709,12 @@
 		bottom: 7%
 	#about
 		max-height: 1000px
+	#test
+		min-height: 1200px
 	#subscribe
 		min-height: 1150px
+	.products-desc
+		margin-bottom: 200px
 
 
 
@@ -902,16 +912,14 @@
 		&__btn
 			width: 32%
 			min-height: 84px
-			margin-left: 8px
-			margin-right: 8px
+			margin-left: 4px
+			margin-right: 4px
 		&__text
 			font-size: 24px
 		&-link
 			height: 50px
 			&__arrow
 				height: 40px
-			&.is-down
-				transform: translate(20px, 180px)
 	.leaf
 		width: 221px
 		height: 221px
@@ -1081,7 +1089,7 @@
 		font-size: 38px
 
 	// Main
-	.hamburger 
+	.hamburger, .nav-mob
 		display: block
 	.header
 		&__inner
@@ -1089,53 +1097,8 @@
 		&__logo svg
 			width: 38px
 			height: 38px
-	.nav 
-		width: 100%
-		height: 100%
-		position: fixed
-		top: 0
-		left: 0
-		padding: 30px
-
-		display: flex
-		flex-direction: column
-		align-items: flex-start
-		justify-content: center
-
-		background: linear-gradient(to right, #f4f7fd 0%,#fbf8f6 100%)
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f7fd', endColorstr='#fbf8f6',GradientType=1 )
-
-		z-index: 5
-		line-height: 2.2
-		transform: translateX(100%)
-		transition: transform 0.5s cubic-bezier(.71,.01,.34,.99)
-		&.is-active
-			transform: translateX(0)
-		li
-			overflow: hidden
-		&__link
-			margin-left: 0
-			color: #333
-			font-size: 3.4vmax
-			text-transform: none
-			white-space: nowrap
-			position: relative
-			&::before
-				content: ''
-				position: absolute
-				top: 0
-				left: 0
-				width: 100%
-				height: 100%
-				background: #f4f7fd
-				transition: 0.2s ease-in-out 0.45s
-			&.is-visible
-				&::before
-					transform: translateY(100%)
-			&.desk
-				display: none
-			&.mob
-				display: block
+		&__nav
+			display: none
 	
 	.blur
 		transform: scale(1.03)
@@ -1177,9 +1140,6 @@
 				display: none
 		&__text
 			font-size: 22px
-		&-link
-			&.is-down
-				transform: translate(20px, 230px)
 		&__number
 			font-size: 18px
 			span
@@ -1318,7 +1278,7 @@
 @media only screen and (max-width : 480px)
 
 	.section-header
-		font-size: 26px
+		font-size: 25px
 
 	// Main
 	#main
@@ -1359,6 +1319,7 @@
 	// Test
 	#test
 		min-height: 630px
+		padding-top: 160px
 	.test
 		&-final
 			transform: translateY(0)
@@ -1394,9 +1355,6 @@
 			margin: 10px 0 6px 0
 		&__text
 			font-size: 18px
-		&__link
-			&.is-down
-				transform: translate(60px, 180px)
 		&__number
 			font-size: 14px
 			span

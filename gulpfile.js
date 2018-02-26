@@ -25,7 +25,7 @@ gulp.task('common-js', function() {
 		])
 	.pipe(plumber())
 	.pipe(concat('common.min.js'))
-	// .pipe(uglify())
+	.pipe(uglify())
 	.pipe(gulp.dest('app/js'));
 });
 
@@ -39,13 +39,12 @@ gulp.task('js', ['common-js'], function() {
 
 		'app/libs/scrollmagic/scrollmagic.js',
 		'app/libs/scrollmagic/animation.gsap.js',
-		'app/libs/scrollmagic/debug.addIndicators.min.js',
 
 		'app/js/common.min.js'
 		])
 	.pipe(plumber())
 	.pipe(concat('scripts.min.js'))
-	// .pipe(uglify())
+	.pipe(uglify())
 	.pipe(gulp.dest('app/js'))
 	.pipe(browserSync.reload({stream: true}));
 });
@@ -54,8 +53,8 @@ gulp.task('browser-sync', function() {
 	browserSync({
 		server: {
 			// host: "192.168.1.103",
-			// host: "192.168.0.125",
-			host: "192.168.1.108",
+			host: "192.168.0.129",
+			// host: "192.168.1.108",
 			// host: "172.20.10.2",
 			baseDir: 'app'
 		},
@@ -122,9 +121,9 @@ gulp.task('build', ['removedist', 'sass', 'js'], function() {
 		'app/fonts/**/*',
 		]).pipe(gulp.dest('dist/fonts'));
 
-	var buildMailer = gulp.src([
-		'app/libs/phpmailer/*',
-		]).pipe(gulp.dest('dist/phpmailer'));
+	var buildImages = gulp.src([
+		'app/img/**/',
+		]).pipe(gulp.dest('dist/img/'));
 
 });
 
